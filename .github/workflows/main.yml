@@ -6,3 +6,7 @@ jobs:
     steps:
       - name: print greeting
         run: echo "hi"
+      - name: give the command date
+        run: |
+          date
+          
