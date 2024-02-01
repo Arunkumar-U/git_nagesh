@@ -1,0 +1,8 @@
+name: firstwork flow
+on: workflow_dispatch
+jobs: 
+  first-job: 
+  runs-on: ubuntu-latest
+    steps:
+	  - name: pring greeting
+	    run: echo "hi"
