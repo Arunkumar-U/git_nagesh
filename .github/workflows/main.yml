@@ -1,5 +1,5 @@
 name: firstworkflow
-on: workflow_dispatch
+on: push
 jobs: 
   first-job: 
     runs-on: ubuntu-latest
@@ -9,4 +9,8 @@ jobs:
       - name: give the command date
         run: |
           date
+      - name: using positional parameters
+        run: |
+          set Our god is greater
+          echo $1 $2 $3
           
