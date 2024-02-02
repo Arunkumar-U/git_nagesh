@@ -14,6 +14,7 @@ jobs:
           set Our god is greater
           echo $1 $2 $3c
   second-job:
+    needs: first-job
     runs-on: ubuntu-latest
     steps:
       - name: sum of two numbers
