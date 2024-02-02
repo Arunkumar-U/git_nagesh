@@ -18,6 +18,6 @@ jobs:
     steps:
       - name: sum of two numbers
         run: |
-        echo "The sum of two numbers"
-        echo 'expr 10+12'
+          echo "The sum of two numbers"
+          echo 'expr 10+12'
 
