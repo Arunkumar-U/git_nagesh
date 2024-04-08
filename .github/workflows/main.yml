@@ -32,14 +32,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name:  show the date
-        runs: date
+        run: date
   
   hello:
     needs: [date]
     runs-on:  ubuntu-latest
       steps:
         - name: print hello world
-          runs: echo "Hello World"
+          run: echo "Hello World"
 
 
   
