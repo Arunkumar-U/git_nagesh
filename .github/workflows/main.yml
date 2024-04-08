@@ -43,7 +43,7 @@ jobs:
 
   whoami:
     needs: [hello]
-    rus-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: check the user using whoami
         run: whoami
