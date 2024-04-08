@@ -23,7 +23,7 @@
 #           echo 'expr 11+11'
 
 
-name:  showing the date and pring hello using two jobs in runner machine
+name: showing the date and pring hello using two jobs in runner machine
 on: push
 
 
@@ -31,12 +31,12 @@ jobs:
   date:
     runs-on: ubuntu-latest
     steps:
-      - name:  show the date
+      - name: show the date
         run: date
   
   hello:
     needs: [date]
-    runs-on:  ubuntu-latest
+    runs-on: ubuntu-latest
       steps:
         - name: print hello world
           run: echo "Hello World"
