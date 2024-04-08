@@ -41,6 +41,13 @@ jobs:
       - name: print hello world
         run: echo "Hello World"
 
+  whoami:
+    needs: [hello]
+    rus-on: ubuntu-latest
+    steps:
+      - name: check the user using whoami
+        run: whoami
+
 
   
 
