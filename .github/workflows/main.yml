@@ -37,9 +37,9 @@ jobs:
   hello:
     needs: [date]
     runs-on: ubuntu-latest
-      steps:
-        - name: print hello world
-          run: echo "Hello World"
+    steps:
+      - name: print hello world
+        run: echo "Hello World"
 
 
   
