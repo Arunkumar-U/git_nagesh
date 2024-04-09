@@ -1,57 +1,18 @@
-# name: firstworkflow
-# on: push
-# jobs: 
-#   first-job: 
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: print greeting
-#         run: echo "hi"
-#       - name: give the command date
-#         run: |
-#           date
-#       - name: using positional parameters
-#         run: |
-#           set Our god is greater
-#           echo $1 $2 $3c
-#   second-job:
-#     needs: first-job
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: sum of two numbers
-#         run: |
-#           echo "The sum of two numbers"
-#           echo 'expr 11+11'
+name: executing the shell command in ubuntu-latest
 
-
-name: showing the date and pring hello using two jobs in runner machine
-on: push
-
+on:
+  push
+  workflow_dispatches
 
 jobs:
-  date:
+  shell:
     runs-on: ubuntu-latest
     steps:
-      - name: show the date
-        run: date
-  
-  hello:
-    needs: [date]
-    runs-on: ubuntu-latest
-    steps:
-      - name: print hello world
-        run: echo "Hello World"
-
-  whoami:
-    needs: [hello]
-    runs-on: ubuntu-latest
-    steps:
-      - name: check the user using whoami
-        run: whoami
-
-
-  
-
-    
-       
-    
-
+      - name: execute the shell command
+        run: |
+        echo "Successfully connect the runner"
+        ls -lart
+        date
+        whoami
+        mkdir arun
+        echo "Thanks for using github action"
