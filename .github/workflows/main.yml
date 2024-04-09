@@ -10,9 +10,9 @@ jobs:
     steps:
       - name: execute the shell command
         run: |
-        echo "Successfully connect the runner"
-        ls -lart
-        date
-        whoami
-        mkdir arun
-        echo "Thanks for using github action"
+          echo "Successfully connect the runner"
+        # ls -lart
+        # date
+        # whoami
+        # mkdir arun
+        # echo "Thanks for using github action"
