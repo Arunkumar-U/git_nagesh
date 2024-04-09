@@ -8,7 +8,7 @@ env:
 
 
 jobs:
-  shell:
+  Test:
     runs-on: ubuntu-latest
     steps:
       - name: execute the shell command
@@ -20,7 +20,7 @@ jobs:
           mkdir arun
           echo "Thanks for using github action"
   
-  secrets:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - name: Testing the secrets
