@@ -1,8 +1,8 @@
 name: executing the shell command in ubuntu-latest
 
 on:
-  push
-  workflow_dispatches
+  push:
+  workflow_dispatch:
 
 jobs:
   shell:
