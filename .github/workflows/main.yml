@@ -25,5 +25,9 @@ jobs:
         env:
           HOPE: ${{ secrets.HOPE }}
         run: |
-          echo ${{ HOPE }}
-          
+          echo "$HOPE"
+
+
+
+  
+
