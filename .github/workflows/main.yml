@@ -23,8 +23,9 @@ jobs:
   
       - name: Testing the secrets
         env:
-          HOPE: ${{ secrets.HOPE }}
+          HOPE: 'arun'
         run: |
+          echo "${{ secrets.HOPE }}"
           echo "${{ env.HOPE }}"
 
 
