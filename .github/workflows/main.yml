@@ -4,6 +4,9 @@ on:
   push:
   workflow_dispatch:
 
+env:
+
+
 jobs:
   shell:
     runs-on: ubuntu-latest
@@ -11,8 +14,15 @@ jobs:
       - name: execute the shell command
         run: |
           echo "Successfully connect the runner"
-        # ls -lart
-        # date
-        # whoami
-        # mkdir arun
-        # echo "Thanks for using github action"
+          ls -lart
+          date
+          whoami
+          mkdir arun
+          echo "Thanks for using github action"
+  
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing the secrets
+        run: |
+          echo ${{ secrets.HOPE }}
