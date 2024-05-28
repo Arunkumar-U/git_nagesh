@@ -2,6 +2,8 @@ name: executing the shell command in ubuntu-latest
 
 on:
   push:
+    branch:
+      arun
   workflow_dispatch:
 
 jobs:
@@ -13,20 +15,18 @@ jobs:
           echo "Successfully connect the runner"
           ls -lart
           date
-          whoami
-          mkdir arun
-          echo "Thanks for using github action"
+          
   
-  Build:
-    runs-on: ubuntu-latest
-    steps:
+  # Build:
+  #   runs-on: ubuntu-latest
+  #   steps:
   
-      - name: Testing the secrets
-        env:
-          HOPE: 'arun'
-        run: |
-          echo "${{ secrets.HOPE }}"
-          echo "${{ env.HOPE }}"
+  #     - name: Testing the secrets
+  #       env:
+  #         HOPE: 'arun'
+  #       run: |
+  #         echo "${{ secrets.HOPE }}"
+  #         echo "${{ env.HOPE }}"
 
 
 
