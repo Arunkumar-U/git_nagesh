@@ -51,6 +51,7 @@ jobs:
         run: |
           ls -la
           chmod 777 file2.txt
+          ls -la
 
 
 
