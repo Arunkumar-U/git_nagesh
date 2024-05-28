@@ -1,14 +1,15 @@
-name: print hello soldieres
+name: print hello soldiers
+
 on: 
   workflow_dispatch
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    
       - name: Checkout code
         uses: actions/checkout@v2
         
       - name: hello soldiers
         run: |
-          sh bin/hello.sh
+          date
