@@ -11,3 +11,4 @@ jobs:
       - name: execute the shell command
         run: |
           whoami
+          echo "No pain no gain"
