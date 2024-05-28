@@ -25,6 +25,6 @@ jobs:
       - name: executing the hello.sh
         run: |
           cd bin/
-          sh stopped.sh
+          sh stop.sh
 
 
