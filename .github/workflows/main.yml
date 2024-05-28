@@ -1,6 +1,9 @@
 name: Creating file as per user input
 
 on:
+  push:
+    branches:
+      - arun
   workflow_dispatch:
     inputs:
       environment:
@@ -44,4 +47,11 @@ jobs:
         with:
           name: file2.txt
           path: file2.txt
+      - name:  listing the runner files
+        run: |
+          ls -la
+
+
+
+
 
