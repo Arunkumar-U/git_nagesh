@@ -1,0 +1,13 @@
+name: executing the shell command in ubuntu-latest
+
+on:
+ 
+  workflow_dispatch:
+
+jobs:
+  acc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: execute the shell command
+        run: |
+          whoami
