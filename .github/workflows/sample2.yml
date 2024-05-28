@@ -13,16 +13,7 @@ jobs:
           pwd
           echo "hello world"
   
-  # Build:
-  #   runs-on: ubuntu-latest
-  #   steps:
   
-  #     - name: Testing the secrets
-  #       env:
-  #         HOPE: 'arun'
-  #       run: |
-  #         echo "${{ secrets.HOPE }}"
-  #         echo "${{ env.HOPE }}"
 
 
 

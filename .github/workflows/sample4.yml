@@ -15,4 +15,16 @@ jobs:
           cd bin/
           sh hello.sh
 
+  Build:
+    runs-on:  ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: executing the hello.sh
+        run: |
+          cd bin/
+          sh stopped.sh
+
 
