@@ -1,0 +1,17 @@
+name:  Echo Hello World
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on:  ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: executing the hello.sh
+        run: |
+          cd bin/
+          sh hello.sh
+          
