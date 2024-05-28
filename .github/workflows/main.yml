@@ -12,7 +12,7 @@ jobs:
           echo "Successfully connect the runner"
           ls -lart
           date
-          
+          whoami
   
   # Build:
   #   runs-on: ubuntu-latest
