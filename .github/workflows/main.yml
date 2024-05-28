@@ -1,0 +1,47 @@
+name: Creating file as per user input
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Choose the environment'
+        required: true
+        default: 'test'
+        type: choice
+        options:
+          - test
+          - acceptance
+
+jobs:
+  test:
+    if: ${{ github.event.inputs.environment == 'test' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Create file1.txt
+        run: echo "This is file1 for test environment" > file1.txt
+
+      - name: Upload file1.txt
+        uses: actions/upload-artifact@v2
+        with:
+          name: file1.txt
+          path: file1.txt
+
+  acceptance:
+    if: ${{ github.event.inputs.environment == 'acceptance' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+      - name: Create file2.txt
+        run: echo "This is file2 for acceptance environment" > file2.txt
+
+      - name: Upload file2.txt
+        uses: actions/upload-artifact@v2
+        with:
+          name: file2.txt
+          path: file2.txt
+
