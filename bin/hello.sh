@@ -1,1 +1,3 @@
-echo "Hello world"
+echo "Hello Soldiers"
+date
+whoami
