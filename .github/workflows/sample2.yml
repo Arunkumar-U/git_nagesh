@@ -1,4 +1,4 @@
-name: executing the shell command in ubuntu-latest
+name: print hello world
 
 on:
   push:
@@ -10,9 +10,10 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
-      - name: execute the shell command
+      - name: pring the hello world
         run: |
           pwd
+          echo "hello world"
   
   # Build:
   #   runs-on: ubuntu-latest
