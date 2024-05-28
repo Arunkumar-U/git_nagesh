@@ -1,9 +1,7 @@
 name: print hello world
 
 on:
-  push:
-    branches:
-      - arun
+  
   workflow_dispatch:
 
 jobs:

@@ -1,9 +1,7 @@
 name: executing the shell command in ubuntu-latest
 
 on:
-  push: 
-    branches: 
-      - arun
+ 
   workflow_dispatch:
 
 jobs:
