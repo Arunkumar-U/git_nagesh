@@ -15,18 +15,36 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ansible
 
+      - name: Debug GitHub Actions environment
+        run: |
+          whoami
+          pwd
+          ls -al
+          
+      - name: Create .ssh directory
+        run: mkdir -p ~/.ssh
+
+      - name: Add SSH key
+        run: |
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan 10.232.48.84 >> ~/.ssh/known_hosts
+        env:
+          HOME: /home/runner
+
+      - name: Debug SSH key setup
+        run: |
+          ls -al ~/.ssh
+          cat ~/.ssh/id_rsa | head -n 5
+
+        
+
       - name: create inventory file
         run: |
           echo "[servers]" > ansible/inventory
           echo "10.232.48.84" >> ansible/inventory
 
 
-      - name: Add SSH key
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan 10.232.48.84 >> ~/.ssh/known_hosts
 
       - name: Run Ansible Playbook
         run: ansible-playbook -i ansible/inventory ansible/playbook.yml
