@@ -24,6 +24,9 @@ jobs:
       - name: Create .ssh directory
         run: mkdir -p ~/.ssh
 
+      - name: Debug SSH private key
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}"
+
       - name: Add SSH key
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
@@ -32,10 +35,12 @@ jobs:
         env:
           HOME: /home/runner
 
+      
+
       - name: Debug SSH key setup
         run: |
           ls -al ~/.ssh
-          cat ~/.ssh/id_rsa | head -n 5
+          head -n 5 ~/.ssh/id_rsa
 
         
 
