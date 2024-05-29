@@ -52,11 +52,16 @@ jobs:
         with:
           name: file2.txt
           path: file2.txt
-          
+
       - name:  listing the runner files
         run: |
           rm -rf file1.txt          
           ls -la
+          pwd
+          
+
+
+
 
 
 
