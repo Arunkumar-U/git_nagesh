@@ -1,22 +1,62 @@
 ---
-- name: Local Ansible Playbook
-  hosts: localhost
+- name: Create a file on remote host
+  hosts: servers
   become: yes
   tasks:
-    - name: Ensure Nginx is installed
-      apt:
-        name: nginx
-        state: present
-        update_cache: yes
-
-    - name: Ensure Nginx is started
-      service:
-        name: nginx
-        state: started
-        enabled: yes
-
-    - name: Create a file in /tmp directory
+    - name: Create a file in /home/pnl0r86j directory
       copy:
         content: "This is a test file created by Ansible."
-        dest: /tmp/testfile.txt
+        dest: /home/pnl0r86j/testfile.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# - name: Local Ansible Playbook
+#   hosts: localhost
+#   become: yes
+#   tasks:
+#     - name: Ensure Nginx is installed
+#       apt:
+#         name: nginx
+#         state: present
+#         update_cache: yes
+
+#     - name: Ensure Nginx is started
+#       service:
+#         name: nginx
+#         state: started
+#         enabled: yes
+
+#     - name: Create a file in /tmp directory
+#       copy:
+#         content: "This is a test file created by Ansible."
+#         dest: /tmp/testfile.txt
 

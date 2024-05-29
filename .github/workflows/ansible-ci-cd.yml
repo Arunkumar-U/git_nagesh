@@ -15,14 +15,27 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ansible
 
+      - name: create inventory file
+        run: |
+          echo "[servers]" > ansible/inventory
+          echo "10.232.48.84" >> ansible/inventory
+
+
+      - name: Add SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan 10.232.48.84 >> ~/.ssh/known_hosts
+
       - name: Run Ansible Playbook
-        run: ansible-playbook ansible/playbook.yml
+        run: ansible-playbook -i ansible/inventory ansible/playbook.yml
         env:
           ANSIBLE_HOST_KEY_CHECKING: 'false'
+          ANSIBLE_PRIVATE_KEY_FILE: ~/.ssh/id_rsa
+          ANSIBLE_USER: pnl0r86j
+      
 
-      - name: list out the runner files using ls
-        run: |
-          whoami
-          pwd
-          cd /tmp
-          ls -la
+      
+
+      
