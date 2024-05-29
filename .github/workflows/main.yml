@@ -1,7 +1,6 @@
 name: Creating file as per user input
 
 on:
-
   workflow_dispatch:
     inputs:
       environment:
