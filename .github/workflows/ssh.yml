@@ -1,5 +1,8 @@
 name:  ssh connect
 on:
+  push:
+    branches:
+      - arun
   workflow_dispatch:
     
     
