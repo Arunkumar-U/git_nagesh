@@ -48,8 +48,7 @@ jobs:
           path: file2.txt
 
       - name: listing the runner files
-        run: |
-                
+        run: |        
           ls -la
           pwd
 
