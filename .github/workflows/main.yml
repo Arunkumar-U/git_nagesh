@@ -1,9 +1,7 @@
 name: Creating file as per user input
 
 on:
-  push:
-    branches:
-      - arun
+
   workflow_dispatch:
     inputs:
       environment:
@@ -32,11 +30,7 @@ jobs:
           name: file1.txt
           path: file1.txt
       
-      - name: listout the files ins the server
-        runs: |
-          rm -rf file2.txt
-          ls -la
-
+      
   acceptance:
     if: ${{ github.event.inputs.environment == 'acceptance' }}
     runs-on: ubuntu-latest
@@ -55,10 +49,10 @@ jobs:
 
       - name:  listing the runner files
         run: |
-          rm -rf file1.txt          
+                
           ls -la
           pwd
-          
+
 
 
 
