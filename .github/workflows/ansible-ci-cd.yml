@@ -1,4 +1,4 @@
-name:  ansible-ci-ci
+name:  ansible-ci-cd
 
 on: 
   push:

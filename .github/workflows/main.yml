@@ -31,6 +31,11 @@ jobs:
         with:
           name: file1.txt
           path: file1.txt
+      
+      - name: listout the files ins the server
+        runs: |
+          rm -rf file2.txt
+          ls -la
 
   acceptance:
     if: ${{ github.event.inputs.environment == 'acceptance' }}
@@ -47,10 +52,10 @@ jobs:
         with:
           name: file2.txt
           path: file2.txt
+          
       - name:  listing the runner files
         run: |
-          ls -la
-          chmod 777 file2.txt
+          rm -rf file1.txt          
           ls -la
 
 
