@@ -1,0 +1,31 @@
+name:  ansible-ci-cd
+
+on: 
+  push:
+    branches: 
+      - arun
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repository
+        uses: actions/checkout@v2
+      
+      - name: Install Ansible
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ansible
+
+      - name: Run Ansible Playbook
+        run: ansible-playbook ansible/playbook.yml
+        env:
+          ANSIBLE_HOST_KEY_CHECKING: 'false'
+
+      - name: list out the runner files using ls
+        run: |
+          whoami
+          pwd
+          cd /tmp
+          ls -la
