@@ -48,8 +48,9 @@ jobs:
 
       - name: listing the runner files
         run: |        
-          ls -la
-          pwd
+          date
+          sh bin/hello.sh
+          sh bin/stop.sh
 
 
 
