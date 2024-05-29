@@ -1,6 +1,6 @@
 ---
 - name: Create a file on remote host
-  hosts: servers
+  hosts: 
   become: yes
   tasks:
     - name: Create a file in /home/pnl0r86j directory

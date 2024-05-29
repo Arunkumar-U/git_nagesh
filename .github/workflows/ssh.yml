@@ -1,0 +1,30 @@
+name:  ssh connect
+on:
+  workflow_dispatch:
+    
+    
+
+jobs:
+
+  test:
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+ 
+      
+      - name: ssh the server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATEKEY }}
+          
+        run: |
+          echo "$SSH_PRIVATE_KEY" > ssh_key.pem
+          chmod 600 ssh_key.pem
+
+          ssh -i ssh_key.pem -o StrictHostKeyChecking=no pnl0r86j@10.232.48.84 \
+            "cd /home/pnl0r86j
+            touch file10.txt
+            "
+            
+            
