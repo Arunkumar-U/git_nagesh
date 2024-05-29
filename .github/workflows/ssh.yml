@@ -15,6 +15,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Test network connectivity
+        run: |
+          ping -c 4 10.232.48.84
+
  
       
       - name: ssh the server
