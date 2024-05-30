@@ -21,7 +21,7 @@ jobs:
         with:
           host: weeus02alfolo01
           username: pnl0r86j
-          key: ${{ secrets.SSH_PRIVATEKEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             date
 
