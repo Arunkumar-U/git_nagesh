@@ -19,7 +19,7 @@ jobs:
       - name: ssh into vm using username and sshkey
         uses: appleboy/ssh-action@master
         with:
-          host: weeus02alfolo01
+          host: 10.232.48.84
           username: pnl0r86j
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
