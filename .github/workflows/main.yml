@@ -21,13 +21,12 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Create file1.txt
-        run: echo "This is file1 for test environment" > file1.txt
+        run: echo "This is file1 for test environment" > file10.txt
 
-      - name: Upload file1.txt
-        uses: actions/upload-artifact@v2
-        with:
-          name: file1.txt
-          path: file1.txt
+    
+      
+      - name: listout the file
+        run: ls -la
       
       
   acceptance:
@@ -37,20 +36,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         
-      - name: Create file2.txt
-        run: echo "This is file2 for acceptance environment" > file2.txt
+      - name: Create file20.txt
+        run: echo "This is file2 for acceptance environment" > file20.txt
 
-      - name: Upload file2.txt
-        uses: actions/upload-artifact@v2
-        with:
-          name: file2.txt
-          path: file2.txt
+      
 
       - name: listing the runner files
         run: |        
           date
           sh bin/hello.sh
           sh bin/stop.sh
+
+       - name: listout the file
+         run: ls -la
 
 
 
