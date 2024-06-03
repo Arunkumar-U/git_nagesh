@@ -47,8 +47,8 @@ jobs:
           sh bin/hello.sh
           sh bin/stop.sh
 
-       - name: listout the file
-         run: ls -la
+      - name: listout the file
+        run: ls -la
 
 
 
