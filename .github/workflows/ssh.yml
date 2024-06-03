@@ -1,0 +1,34 @@
+name:  ssh connect
+on:
+  push:
+    branches:
+      - arun
+  workflow_dispatch:
+    
+    
+
+jobs:
+
+  test:
+    
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: ssh into vm using username and sshkey
+        uses: appleboy/ssh-action@master
+        with:
+          host: 10.232.48.84
+          username: pnl0r86j
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            date
+
+            
+
+ 
+      
+    
+            
+            
