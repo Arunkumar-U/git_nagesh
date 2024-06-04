@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - arun
-  workflow_dispatches:
+  workflow_dispatch:
 
 jobs:
   test:
