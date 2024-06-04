@@ -14,8 +14,8 @@ jobs:
 
       - name: file cration for acc
         run: |
-        touch file_acc.txt
-        ls -la
+          touch file_acc.txt
+          ls -la
 
 
   
