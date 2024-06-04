@@ -1,9 +1,9 @@
-name:  ssh connect
-on:
-  push:
-    branches:
-      - arun
-  workflow_dispatch:
+# name:  ssh connect
+# on:
+#   push:
+#     branches:
+#       - arun
+#   workflow_dispatch:
     
     
 

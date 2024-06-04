@@ -1,7 +1,7 @@
-name:  ansible-ci-cd
+# name:  ansible-ci-cd
 
-on:
-  workflow_dispatch:
+# on:
+#   workflow_dispatch:
 
 jobs:
   test:

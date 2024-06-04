@@ -1,16 +1,16 @@
-name: Creating file as per user input
+# name: Creating file as per user input
 
-on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Choose the environment'
-        required: true
-        default: 'test'
-        type: choice
-        options:
-          - test
-          - acceptance
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       environment:
+#         description: 'Choose the environment'
+#         required: true
+#         default: 'test'
+#         type: choice
+#         options:
+#           - test
+#           - acceptance
 
 jobs:
   test:

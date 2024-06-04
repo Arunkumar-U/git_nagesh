@@ -1,0 +1,21 @@
+name: create one file in runner for test
+on: 
+  push:
+    branches:
+      - arun
+  workflow_dispatches:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repository to runner
+        uses: actions/checkout@v2
+
+      - name: file cration for acc
+        run: |
+        touch file_acc.txt
+        ls -la
+
+
+  
