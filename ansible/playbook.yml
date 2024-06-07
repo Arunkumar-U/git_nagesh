@@ -8,6 +8,11 @@
         content: "This is a test file created by Ansible."
         dest: /home/pnl0r86j/testfile.txt
 
+    - name: list the file
+      shell: |
+        ls -lart
+        
+
 
 
 
