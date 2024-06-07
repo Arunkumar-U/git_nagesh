@@ -1,6 +1,6 @@
 name: create one file in runner for test
 on: 
-  push:
+  pull:
     branches:
       - arun
   workflow_dispatch:

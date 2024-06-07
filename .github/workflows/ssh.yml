@@ -1,6 +1,6 @@
 # name:  ssh connect
 # on:
-#   push:
+#   pull:
 #     branches:
 #       - arun
 #   workflow_dispatch:

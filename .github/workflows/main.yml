@@ -1,54 +1,54 @@
-# name: Creating file as per user input
+name: Creating file as per user input
 
-# on:
-#   workflow_dispatch:
-#     inputs:
-#       environment:
-#         description: 'Choose the environment'
-#         required: true
-#         default: 'test'
-#         type: choice
-#         options:
-#           - test
-#           - acceptance
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Choose the environment'
+        required: true
+        default: 'test'
+        type: choice
+        options:
+          - test
+          - acceptance
 
-# jobs:
-#   test:
-#     if: ${{ github.event.inputs.environment == 'test' }}
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v2
+jobs:
+  test:
+    if: ${{ github.event.inputs.environment == 'test' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
         
-#       - name: Create file1.txt
-#         run: echo "This is file1 for test environment" > file10.txt
+      - name: Create file1.txt
+        run: echo "This is file1 for test environment" > file10.txt
 
     
       
-#       - name: listout the file
-#         run: ls -la
+      - name: listout the file
+        run: ls -la
       
       
-#   acceptance:
-#     if: ${{ github.event.inputs.environment == 'acceptance' }}
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v2
+  acceptance:
+    if: ${{ github.event.inputs.environment == 'acceptance' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
         
-#       - name: Create file20.txt
-#         run: echo "This is file2 for acceptance environment" > file20.txt
+      - name: Create file20.txt
+        run: echo "This is file2 for acceptance environment" > file20.txt
 
       
 
-#       - name: listing the runner files
-#         run: |        
-#           date
-#           sh bin/hello.sh
-#           sh bin/stop.sh
+      - name: listing the runner files
+        run: |        
+          date
+          sh bin/hello.sh
+          sh bin/stop.sh
 
-#       - name: listout the file
-#         run: ls -la
+      - name: listout the file
+        run: ls -la
 
 
 
