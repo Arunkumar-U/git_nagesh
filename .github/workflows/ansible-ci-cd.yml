@@ -28,7 +28,7 @@ jobs:
       - name: Verify HTTP server
         run: |
           sleep 5 # Give the server a moment to start
-          curl http://localhost:8000
+          curl -v http://localhost:8000
 
 
 
