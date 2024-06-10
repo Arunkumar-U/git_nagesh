@@ -2,8 +2,12 @@
 - name: Create multiple files using a loop
   hosts: localhost
   vars_files:
-    - vars/main.yml
+    - var/main.yml
   tasks:
+    - name: Debug jobFolderNames
+      debug:
+        var: jobFolderNames
+        
     - name: Create files
       copy:
         content: "This is file {{ item }}"
