@@ -1,0 +1,13 @@
+---
+- name: Create multiple files using a loop
+  hosts: localhost
+  tasks:
+    - name: Create files
+      copy:
+        content: "This is file {{ item }}"
+        dest: "/tmp/file{{ item }}.txt"
+      with_items:
+        - 1
+        - 2
+        - 3
+

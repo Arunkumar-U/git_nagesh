@@ -20,52 +20,10 @@ jobs:
 
       - name: Run Ansible Playbook
         run: |
-          ansible-playbook -i localhost, -c local ansible/nginx.yml
+          ansible-playbook -i localhost, -c local ansible/loop_ansible.yml
 
-      - name: Install ngrok
+      - name: list out the files
         run: |
-          wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-          unzip ngrok-stable-linux-amd64.zip
-          sudo mv ngrok /usr/local/bin
-
-      - name: Start ngrok and expose Nginx server
-        run: |
-          nohup ngrok http 80 > /tmp/ngrok.log 2>&1 &
-          sleep 10
-          curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url > /tmp/ngrok_url.txt
-
-      - name: Output ngrok URL - Debugging
-        run: |
-          ls -l /tmp/ngrok_url.txt
-          cat /tmp/ngrok_url.txt
-
-
-
-
-      
-      
-          
-      
-
-      
-
-      
-        
-
-      
-
-      
-
-        
-
-    
-
-
-
-      
-        
-      
-
-      
+          ls -la
 
       
