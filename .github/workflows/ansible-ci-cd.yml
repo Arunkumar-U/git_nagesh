@@ -24,6 +24,7 @@ jobs:
 
       - name: list out the files
         run: |
+          cd /tmp
           ls -la
 
       
