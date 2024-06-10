@@ -7,3 +7,7 @@ jobFolderNames:
   - JAC_3.json
   - arun.txt
   - vimal.txt
+
+arun:
+  - ansible
+  - github

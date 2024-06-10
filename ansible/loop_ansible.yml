@@ -14,6 +14,11 @@
         dest: "/tmp/{{ item }}"
       with_items: "{{ jobFolderNames }}"
 
+    - name: list out the main.yml
+      shell:
+        echo "{{ arun }}"
+      with_items: "{{ arun }}"
+
 
       
 
