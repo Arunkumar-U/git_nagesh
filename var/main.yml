@@ -1,7 +1,7 @@
 ---
+# Add the modified file names to the below list
 
-#Add the modified file names to the below list
-
-jobFolderNames: 
- - JAC_1.json
- - JAC_2.json
+jobFolderNames:
+  - JAC_1.json
+  - JAC_2.json
+  - JAC_3.json
