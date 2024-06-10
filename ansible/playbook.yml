@@ -26,11 +26,11 @@
 
     
     - name: Install Python3
-    become: yes
-    apt:
-      name: python3
-      state: present
-      update_cache: yes
+      become: yes
+      apt:
+        name: python3
+        state: present
+        update_cache: yes
 
     - name: Install pip3
       become: yes
@@ -59,4 +59,3 @@
       debug:
         var: ls_output.stdout
 
-        
