@@ -34,8 +34,10 @@ jobs:
           sleep 10
           curl -s localhost:4040/api/tunnels | jq -r .tunnels[0].public_url > /tmp/ngrok_url.txt
 
-      - name: Output ngrok URL
-        run: cat /tmp/ngrok_url.txt
+      - name: Output ngrok URL - Debugging
+        run: |
+          ls -l /tmp/ngrok_url.txt
+          cat /tmp/ngrok_url.txt
 
 
 
