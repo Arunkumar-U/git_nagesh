@@ -2,7 +2,7 @@
 - name: Create multiple files using a loop
   hosts: localhost
   vars_files:
-    - var/main.yml
+    - vars/main.yml
   tasks:
     - name: Debug jobFolderNames
       debug:
