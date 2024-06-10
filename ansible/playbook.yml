@@ -24,16 +24,29 @@
         dest: /tmp/webserver/index.html
         mode: '0644'
 
-    - name: Install Python3 and HTTP server
+    
+    - name: Install Python3
+    become: yes
+    apt:
+      name: python3
+      state: present
+      update_cache: yes
+
+    - name: Install pip3
       become: yes
       apt:
-        name: python3
+        name: python3-pip
         state: present
-        update_cache: yes
+
+    - name: Ensure http.server package is installed
+      become: yes
+      pip:
+        name: httpserver
+        state: present
 
     - name: Start a basic HTTP server
       shell: |
-        python3 -m http.server 8000 --directory /tmp/webserver &
+        nohup python3 -m http.server 8000 --directory /tmp/webserver > /tmp/webserver/http.log 2>&1 &
       args:
         executable: /bin/bash
 
@@ -45,3 +58,5 @@
     - name: Show ls output
       debug:
         var: ls_output.stdout
+
+        
