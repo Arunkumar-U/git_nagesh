@@ -1,80 +1,47 @@
 ---
-- name: Create a file on remote host
+- name: Create and serve a simple HTML page
   hosts: localhost
-  become: yes
   tasks:
     - name: Ensure the directory structure exists
       file:
-        path: /home/pnl0r86
+        path: /tmp/webserver
         state: directory
         mode: '0755'
 
-    - name: Create an empty file
-      file:
-        path: /home/pnl0r86/arun.txt
-        state: touch
+    - name: Create an HTML file
+      copy:
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Hello, Ansible!</title>
+          </head>
+          <body>
+            <h1>Hello from Ansible Playbook</h1>
+            <p>This page is served by a basic HTTP server.</p>
+          </body>
+          </html>
+        dest: /tmp/webserver/index.html
         mode: '0644'
 
+    - name: Install Python3 and HTTP server
+      become: yes
+      apt:
+        name: python3
+        state: present
+        update_cache: yes
 
-    - name: Verify the file exists
-      shell: ls -l /home/pnl0r86/arun.txt
+    - name: Start a basic HTTP server
+      shell: |
+        python3 -m http.server 8000 --directory /tmp/webserver &
+      args:
+        executable: /bin/bash
+
+    - name: Verify the HTML file exists
+      shell: ls -l /tmp/webserver/index.html
       register: ls_output
       ignore_errors: yes
 
     - name: Show ls output
       debug:
         var: ls_output.stdout
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# - name: Local Ansible Playbook
-#   hosts: localhost
-#   become: yes
-#   tasks:
-#     - name: Ensure Nginx is installed
-#       apt:
-#         name: nginx
-#         state: present
-#         update_cache: yes
-
-#     - name: Ensure Nginx is started
-#       service:
-#         name: nginx
-#         state: started
-#         enabled: yes
-
-#     - name: Create a file in /tmp directory
-#       copy:
-#         content: "This is a test file created by Ansible."
-#         dest: /tmp/testfile.txt
-
