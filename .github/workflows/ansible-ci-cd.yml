@@ -29,7 +29,7 @@ jobs:
 
       - name: viewing the github variables
         run: |
-          echo "user name is $user"
-          echo "password is $password"
+          echo "user name is $USER"
+          echo "password is $PASSWORD"
 
       
