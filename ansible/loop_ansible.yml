@@ -7,6 +7,12 @@
     - name: Debug jobFolderNames
       debug:
         var: jobFolderNames
+
+    - name: Debug ctrlm_jac_usr and ctrlm_jac_pass
+      debug:
+        msg:
+          - "user: {{ user }}"
+          - "password: {{ password }}"
         
     - name: Create files
       copy:
@@ -14,10 +20,7 @@
         dest: "/tmp/{{ item }}"
       with_items: "{{ jobFolderNames }}"
 
-    - name: list out the main.yml
-      shell:
-        echo "{{ arun }}"
-      with_items: "{{ arun }}"
+    
 
 
       

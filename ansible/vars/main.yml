@@ -11,3 +11,6 @@ jobFolderNames:
 arun:
   - ansible
   - github
+
+user: arun
+password: hope
