@@ -13,6 +13,11 @@
         msg:
           - "user: {{ user }}"
           - "password: {{ password }}"
+
+    - name: Set GitHub Actions output for ctrlm_jac_usr and another_variable
+      command: |
+        echo "user={{ user }}" >> $GITHUB_ENV;
+        echo "password={{ password }}" >> $GITHUB_ENV
         
     - name: Create files
       copy:

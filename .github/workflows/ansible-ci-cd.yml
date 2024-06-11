@@ -27,4 +27,9 @@ jobs:
           cd /tmp
           ls -la
 
+      - name: viewing the github variables
+        run: |
+          echo "user name is $user"
+          echo "password is $password"
+
       

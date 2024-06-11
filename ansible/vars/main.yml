@@ -2,11 +2,11 @@
 # Add the modified file names to the below list
 
 jobFolderNames:
-  - JAC_1.json
-  - JAC_2.json
-  - JAC_3.json
-  - arun.txt
-  - vimal.txt
+  - 1.txt
+  - 2.txt
+  - 3.txt
+  - 4.txt
+  - 5.txt
 
 arun:
   - ansible
@@ -14,3 +14,4 @@ arun:
 
 user: arun
 password: hope
+
