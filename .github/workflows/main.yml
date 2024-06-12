@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Create file1.txt
-        run: echo "This is file1 for test environment" > water.txt
+        run: echo "This is file1 for test environment" > mobile.txt
 
     
       
