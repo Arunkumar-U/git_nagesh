@@ -23,7 +23,8 @@ jobs:
       - name: Create file1.txt
         run: echo "This is file1 for test environment" > ironman.txt
 
-    
+      - name: executing the date command
+        run: date
       
       - name: listout the file
         run: ls -la
