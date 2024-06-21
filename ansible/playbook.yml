@@ -1,61 +1,6 @@
----
-- name: Create and serve a simple HTML page
+# playbook.yml
+- name: Test Playbook
   hosts: localhost
   tasks:
-    - name: Ensure the directory structure exists
-      file:
-        path: /tmp/webserver
-        state: directory
-        mode: '0755'
-
-    - name: Create an HTML file
-      copy:
-        content: |
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>Hello, Ansible!</title>
-          </head>
-          <body>
-            <h1>Hello from Ansible Playbook</h1>
-            <p>This page is served by a basic HTTP server.</p>
-          </body>
-          </html>
-        dest: /tmp/webserver/index.html
-        mode: '0644'
-
-    
-    - name: Install Python3
-      become: yes
-      apt:
-        name: python3
-        state: present
-        update_cache: yes
-
-    - name: Install pip3
-      become: yes
-      apt:
-        name: python3-pip
-        state: present
-
-    - name: Ensure http.server package is installed
-      become: yes
-      pip:
-        name: httpserver
-        state: present
-
-    - name: Start a basic HTTP server
-      shell: |
-        nohup python3 -m http.server 8000 --directory /tmp/webserver > /tmp/webserver/http.log 2>&1 &
-      args:
-        executable: /bin/bash
-
-    - name: Verify the HTML file exists
-      shell: ls -l /tmp/webserver/index.html
-      register: ls_output
-      ignore_errors: yes
-
-    - name: Show ls output
-      debug:
-        var: ls_output.stdout
-
+    - name: Ping localhost
+      ping:
