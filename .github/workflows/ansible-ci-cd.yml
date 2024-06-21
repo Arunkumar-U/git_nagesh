@@ -1,6 +1,9 @@
 name:  ansible-ci-cd
-
-
+on:
+  push:
+    branches:
+      - arun
+  workflow_dispatch:
 
 jobs:
   test:
