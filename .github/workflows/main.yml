@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Create file1.txt
-        run: echo "This is file1 for test environment" > ironman.txt
+        run: echo "This is file1 for test environment" > mark1.txt
 
       - name: executing the date command
         run: date
@@ -40,7 +40,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Create file20.txt
-        run: echo "This is file2 for acceptance environment" > batman.txt
+        run: echo "This is file2 for acceptance environment" > mark2.txt
 
       
 
