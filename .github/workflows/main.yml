@@ -1,6 +1,9 @@
 name: Creating file as per user input
 
 on:
+  push:
+    branches:
+      - arun
   workflow_dispatch:
     inputs:
       environment:
@@ -21,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Create file1.txt
-        run: echo "This is file1 for test environment" > file10.txt
+        run: echo "This is file1 for test environment" > ironman.txt
 
     
       
@@ -39,7 +42,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Create file20.txt
-        run: echo "This is file2 for acceptance environment" > file20.txt
+        run: echo "This is file2 for acceptance environment" > batman.txt
 
 
       - name: listout the file
