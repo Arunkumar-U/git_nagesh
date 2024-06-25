@@ -25,6 +25,7 @@ jobs:
         run: |
           cd /tmp
           ls -la
+          pwd
 
       - name: viewing the github variables
         run: |

@@ -1,9 +1,6 @@
 name: Creating file as per user input
 
 on:
-  push:
-    branches:
-      - arun
   workflow_dispatch:
     inputs:
       environment:
