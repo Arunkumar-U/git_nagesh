@@ -28,8 +28,7 @@ jobs:
       - name: listout the file
         run: ls -la
 
-      
-      
+          
       
   acceptance:
     if: ${{ github.event.inputs.environment == 'acceptance' }}

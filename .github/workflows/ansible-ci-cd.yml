@@ -27,9 +27,6 @@ jobs:
           ls -la
           pwd
 
-      - name: viewing the github variables
-        run: |
-          echo "user name is $USER"
-          echo "password is $PASSWORD"
+      
 
       
