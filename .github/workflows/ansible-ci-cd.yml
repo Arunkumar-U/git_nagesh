@@ -1,6 +1,8 @@
 name:  ansible-ci-cd
-
 on:
+  push:
+    branches:
+      - arun
   workflow_dispatch:
 
 jobs:
@@ -15,50 +17,19 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ansible
 
-      - name: Debug GitHub Actions environment
-        run: |
-          whoami
-          pwd
-          ls -al
-          
-      - name: Create .ssh directory
-        run: mkdir -p ~/.ssh
-
-      - name: Debug SSH private key
-        run: echo "${{ secrets.SSH_PRIVATE_KEY }}"
-
-      - name: Add SSH key
-        run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan 10.232.48.84 >> ~/.ssh/known_hosts
-        env:
-          HOME: /home/runner
-
-      
-
-      - name: Debug SSH key setup
-        run: |
-          ls -al ~/.ssh
-          head -n 5 ~/.ssh/id_rsa
-
-        
-
-      - name: create inventory file
-        run: |
-          echo "[servers]" > ansible/inventory
-          echo "10.232.48.84" >> ansible/inventory
-
-
-
       - name: Run Ansible Playbook
-        run: ansible-playbook -i ansible/inventory ansible/playbook.yml
-        env:
-          ANSIBLE_HOST_KEY_CHECKING: 'false'
-          ANSIBLE_PRIVATE_KEY_FILE: ~/.ssh/id_rsa
-          ANSIBLE_USER: pnl0r86j
-      
+        run: |
+          ansible-playbook -i localhost, -c local ansible/playbook.yml
 
-      
+      - name: list out the files
+        run: |
+          cd /tmp
+          ls -la
+          pwd
+
+      - name: viewing the github variables
+        run: |
+          echo "user name is $USER"
+          echo "password is $PASSWORD"
 
       
