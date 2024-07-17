@@ -8,16 +8,6 @@
       debug:
         var: jobFolderNames
 
-    - name: Debug ctrlm_jac_usr and ctrlm_jac_pass
-      debug:
-        msg:
-          - "user: {{ user }}"
-          - "password: {{ password }}"
-
-    - name: Set GitHub Actions output for ctrlm_jac_usr and another_variable
-      command: |
-        echo "USER={{ user }}" >> $GITHUB_ENV;
-        echo "PASSWORD={{ password }}" >> $GITHUB_ENV
         
     - name: Create files
       copy:

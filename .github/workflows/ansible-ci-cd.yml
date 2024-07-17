@@ -2,7 +2,7 @@ name:  ansible-ci-cd
 on:
   push:
     branches:
-      - arun
+      - master
   workflow_dispatch:
 
 jobs:
