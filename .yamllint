@@ -3,7 +3,7 @@ extends: default
 rules:
   trailing-spaces: disable
   truthy: disable
-  # empty-lines: disable
+  empty-lines: disable
   new-line-at-end-of-file: enable
   line-length:
     max: 120
