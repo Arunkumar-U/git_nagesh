@@ -40,5 +40,8 @@ jobs:
         run: echo "This is file2 for acceptance environment" > batman.txt  
 
       - name: listout the file
-        run: ls -la
+        run: |
+          ls -la
+
+          date
 ...
