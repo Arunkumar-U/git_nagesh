@@ -1,3 +1,4 @@
+---
 name: Creating file as per user input
 on:
   workflow_dispatch:
@@ -20,11 +21,6 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Create file1.txt
-
-        run: echo "This is file1 for test environment" > ironman.txt
-
-  
-
         run: echo "This is file1 for test environment" > ironman.txt
 
       - name: executing the date command
@@ -32,9 +28,7 @@ jobs:
       
       - name: listout the file
         run: ls -la
-
-          
-      
+   
   acceptance:
     if: ${{ github.event.inputs.environment == 'acceptance' }}
     runs-on: ubuntu-latest
@@ -47,6 +41,7 @@ jobs:
 
       - name: listout the file
         run: ls -la
+...
 
 
 
