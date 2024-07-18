@@ -16,7 +16,7 @@ jobs:
     if: ${{ github.event.inputs.environment == 'test' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+     - name: Checkout repository
         uses: actions/checkout@v2
         
       - name: Create file1.txt
