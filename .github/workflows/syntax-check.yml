@@ -12,12 +12,13 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'  # Specify your required Python version
+        python-version: '3.x' 
 
     - name: Install dependencies
       run: |
-        pip install flake8  # or any other linter or syntax checker you use
-
+        pip install flake8 
+        
+        
     - name: Run syntax check
       run: |
-        flake8 .  # Adjust the command to your linter/syntax checker
+        flake8 . || exit 1  
