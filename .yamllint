@@ -1,7 +1,7 @@
 extends: default
 
 rules:
-  # trailing-spaces: disable
+  trailing-spaces: disable
   truthy: disable
   # empty-lines: disable
   new-line-at-end-of-file: disable
