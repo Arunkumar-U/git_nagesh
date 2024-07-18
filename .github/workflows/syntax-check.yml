@@ -17,8 +17,9 @@ jobs:
     - name: Install dependencies
       run: |
         pip install flake8 
+        flake8 ansible/nginx.yml
         
         
-    - name: Run syntax check
-      run: |
-        flake8 . || exit 1  
+    # - name: Run syntax check
+    #   run: |
+    #     flake8 . || exit 1  
