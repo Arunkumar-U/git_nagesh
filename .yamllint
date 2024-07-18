@@ -4,7 +4,7 @@ rules:
   trailing-spaces: disable
   truthy: disable
   # empty-lines: disable
-  new-line-at-end-of-file: disable
+  new-line-at-end-of-file: enable
   line-length:
     max: 120
     level: warning

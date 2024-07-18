@@ -37,11 +37,8 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Create file20.txt
-        run: echo "This is file2 for acceptance environment" > batman.txt  
+        run: echo "This is file2 for acceptance environment" > batman.txt
 
       - name: listout the file
-        run: |
-          ls -la
-
-          date
+        run: ls -la
 ...
