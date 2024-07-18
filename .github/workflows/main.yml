@@ -42,12 +42,3 @@ jobs:
       - name: listout the file
         run: ls -la
 ...
-
-
-
-
-
-
-
-
-
