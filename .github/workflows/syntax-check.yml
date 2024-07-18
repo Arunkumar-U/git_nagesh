@@ -9,17 +9,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x' 
-
-    - name: Install dependencies
+    - name: Install yamllint
       run: |
-        pip install flake8 
-        flake8 ansible/nginx.yml
-        
-        
-    # - name: Run syntax check
-    #   run: |
-    #     flake8 . || exit 1  
+        pip install yamllint
+
+    - name: Run yamllint
+      run: |
+        yamllint .  # Check all YAML files in the repository
+
+
