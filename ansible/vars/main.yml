@@ -1,18 +1,10 @@
 ---
 # Add the modified file names to the below list
-
 jobFolderNames:
   - 1.txt
   - 2.txt
   - 3.txt
   - 4.txt
   - 5.txt
-
-arun:
-  - ansible
-  - github
-  - github action
-
-user: arun
-password: hope
+...
 

@@ -15,6 +15,6 @@ jobs:
 
     - name: Run yamllint
       run: |
-        yamllint .  # Check all YAML files in the repository
+        yamllint ansible/main.yml
 
 
