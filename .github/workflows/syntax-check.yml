@@ -15,6 +15,6 @@ jobs:
 
     - name: Run yamllint
       run: |
-        yamllint ansible/main.yml
+        yamllint ansible/vars/main.yml
 
 
