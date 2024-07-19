@@ -1,0 +1,34 @@
+{
+  "JAC_3": {
+  "Type":  "SimpleFolder",
+  "ControlmServer": "vmctmsrvtstwe01",
+  "OrderMethod": "Manual",
+  "JAC_3_Test": {
+    "Type": "Job:Command",
+    "DaysKeepActive": "3",
+    "SubApplication": "JAC@CTRLM",
+    "Host": "vmctmsrvtstwe01.tooling.shd.eu-int-aholddelhaize.com",
+    "CreatedBy": "pnl0ll17",
+    "RunAs": "test1",
+    "Application": "JAC",
+    "Command": "sleep 5",
+    "When": {
+      "WeekDays": [
+        "TUE"
+      ],
+      "MonthDays": [
+        "D1P*",
+        "D2P*",
+        "D3P*",
+        "D4P*",
+        "D5P*",
+        "D6P*",
+        "D7P*"
+      ],
+      "StartDate": "20240105",
+      "EndDate": "20240107",
+      "MonthDaysCalendar": "CALAP4-4-5"
+    }
+  }
+  }
+}

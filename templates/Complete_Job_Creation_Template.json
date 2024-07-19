@@ -1,0 +1,109 @@
+{
+    "JAC_5": {
+        "Type": "SimpleFolder",
+        "ControlmServer": "vmctmsrvtstwe01",
+        "OrderMethod": "Manual",
+        "JAC_5_Test_Cyclic": {
+            "Type": "Job:Script",
+            "DaysKeepActive": "1",
+            "SubApplication": "JAC@CTRLM",
+            "RunAsDummy": false,
+            "Priority": "Very Low",
+            "FileName": "file.sh",
+            "Confirm": true,
+            "Host": "vmctmsrvtstwe01.tooling.shd.eu-int-aholddelhaize.com",
+            "FilePath": "/path/to/file",
+            "Command": "sleep 10",
+            "CreatedBy": "pnl0ll17",
+            "Description": "Dummy",
+            "RunAs": "ctmsrv",
+            "Application": "JAC",
+            "Arguments": [
+                "tst"
+            ],
+            "DocumentationFile": {
+                "FileName": "CTASKNUM"
+            },
+            "Rerun": {
+                "Times": "26",
+                "Units": "Hours",
+                "Every": "1"
+            },
+            "When": {
+                "WeekDays": [
+                    "TUE"
+                ],
+                "MonthDays": [
+                    "D1P*",
+                    "D2P*",
+                    "D3P*",
+                    "D4P*",
+                    "D5P*",
+                    "D6P*",
+                    "D7P*"
+                ],
+                "StartDate": "20240105",
+                "EndDate": "20240107",
+                "ToTime": "0530",
+                "FromTime": "0800",
+                "MonthDaysCalendar": "CALAP4-4-5"
+            },
+            "Notify:NotOK_0": {
+                "Type": "Notify:NotOK",
+                "Destination": "ECS",
+                "Message": "SEVERITY 4"
+            },
+            "Notify:ExecutionTime_1": {
+                "Type": "Notify:ExecutionTime",
+                "Criteria": "GreaterThan",
+                "Destination": "ECS",
+                "Message": "SEVERITY 4",
+                "Value": "6"
+            },
+            "JAC": {
+                "Type": "Resource:Lock",
+                "LockType": "Shared"
+            },
+            "JACQ": {
+                "Type": "Resource:Pool",
+                "Quantity": "10"
+            },
+            "IfBase:Folder:CompletionStatus_2": {
+                "Type": "If:CompletionStatus",
+                "CompletionStatus": "NOTOK",
+                "Mail_0": {
+                    "Type": "Action:Mail",
+                    "Subject": "%%JOBNAME Failed",
+                    "To": "Karthik.Baskar@ah.nl",
+                    "Message": "Check Failure",
+                    "AttachOutput": true,
+                    "Urgency": "Urgent"
+                }
+            },
+            "eventsToWaitFor": {
+                "Type": "WaitForEvents",
+                "Events": [
+                    {
+                        "Event": "JAC_in"
+                    }
+                ]
+            },
+            "eventsToAdd": {
+                "Type": "AddEvents",
+                "Events": [
+                    {
+                        "Event": "JAC_Out"
+                    }
+                ]
+            },
+            "eventsToDelete": {
+                "Type": "DeleteEvents",
+                "Events": [
+                    {
+                        "Event": "JAC_in"
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,160 @@
+{
+  "JAC_1": {
+  "Type":  "SimpleFolder",
+  "ControlmServer": "vmctmsrvtstwe01",
+  "OrderMethod": "Manual",
+  "JAC_1_Test_Dummy": {
+    "Type": "Job:Command",
+    "DaysKeepActive": "2",
+    "SubApplication": "JAC1@CTRLM_SIVA",
+    "RunAsDummy": false,
+    "Host": "vmctmsrvtstwe01.tooling.shd.eu-int-aholddelhaize.com",
+    "CreatedBy": "pnl0ll17",
+
+    "Description": "arun",
+    "RunAs": "hari",
+
+    "Application": "Hari",
+    "Command": "sleep 10",
+    "When": {
+      "WeekDays": [
+        "TUE"
+      ],
+      "MonthDays": [
+        "D1P*",
+        "D2P*",
+        "D3P*",
+        "D4P*",
+        "D5P*",
+        "D6P*",
+        "D7P*"
+      ],
+      "StartDate": "20240104",
+      "EndDate": "20240107",
+      "MonthDaysCalendar": "CALAP4-4-5"
+    }
+  },
+  "JAC_1_Test_Dummy_2": {
+    "Type": "Job:Command",
+    "DaysKeepActive": "1",
+    "SubApplication": "JAC@CTRLM",
+    "RunAsDummy": false,
+    "Host": "vmctmsrvtstwe01.tooling.shd.eu-int-aholddelhaize.com",
+    "CreatedBy": "pnl0ll17",
+    "Description": "Dummy.",
+    "RunAs": "sabari",
+    "Application": "JAC",
+    "Command": "sleep 10",
+    "When": {
+      "WeekDays": [
+        "TUE"
+      ],
+      "MonthDays": [
+        "D1P*",
+        "D2P*",
+        "D3P*",
+        "D4P*",
+        "D5P*",
+        "D6P*",
+        "D7P*"
+      ],
+      "StartDate": "20240104",
+      "EndDate": "20240107",
+      "MonthDaysCalendar": "CALAP4-4-5"
+    }
+  },
+  "JAC_1_Test_Cyclic": {
+    "Type": "Job:Command",
+    "DaysKeepActive": "1",
+    "SubApplication": "JAC@CTRLM",
+    "Confirm": true,
+    "RunAsDummy": true,
+    "Host": "vmctmsrvtstwe01.tooling.shd.eu-int-aholddelhaize.com",
+    "CreatedBy": "pnl0ll17",
+    "Description": "Dummy",
+    "RunAs": "ctmsrv",
+    "Application": "JAC",
+    "Command": "sleep 5",
+    "Rerun": {
+      "Times": "26",
+      "Units": "Hours",
+      "Every": "1"
+    },
+    "When": {
+      "WeekDays": [
+        "TUE"
+      ],
+      "MonthDays": [
+        "D1P*",
+        "D2P*",
+        "D3P*",
+        "D4P*",
+        "D5P*",
+        "D6P*",
+        "D7P*"
+      ],
+      "StartDate": "20240105",
+      "EndDate": "20240107",
+      "ToTime": "0530",
+      "FromTime": "0800",
+      "MonthDaysCalendar": "CALAP4-4-5"
+    },
+    "Notify:NotOK_0": {
+      "Type": "Notify:NotOK",
+      "Destination": "ECS",
+      "Message": "SEVERITY 4"
+    },
+    "Notify:ExecutionTime_1": {
+      "Type": "Notify:ExecutionTime",
+      "Criteria": "GreaterThan",
+      "Destination": "ECS",
+      "Message": "SEVERITY 4",
+      "Value": "6"
+    },
+    "JAC": {
+      "Type": "Resource:Lock",
+      "LockType": "Shared"
+    },
+    "JACQ": {
+      "Type": "Resource:Pool",
+      "Quantity": "10"
+    },
+    "IfBase:Folder:CompletionStatus_2": {
+      "Type": "If:CompletionStatus",
+      "CompletionStatus": "NOTOK",
+      "Mail_0": {
+        "Type": "Action:Mail",
+        "Subject": "%%JOBNAME Failed",
+        "To": "Karthik.Baskar@ah.nl",
+        "Message": "Check Failure",
+        "AttachOutput": true,
+        "Urgency": "Urgent"
+      }
+    },
+    "eventsToWaitFor": {
+      "Type": "WaitForEvents",
+      "Events": [
+        {
+          "Event": "JAC_in"
+        }
+      ]
+    },
+    "eventsToAdd": {
+      "Type": "AddEvents",
+      "Events": [
+        {
+          "Event": "JAC_Out"
+        }
+      ]
+    },
+    "eventsToDelete": {
+      "Type": "DeleteEvents",
+      "Events": [
+        {
+          "Event": "JAC_in"
+        }
+      ]
+    }
+  }
+  }
+}

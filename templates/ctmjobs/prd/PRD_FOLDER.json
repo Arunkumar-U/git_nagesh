@@ -1,0 +1,7 @@
+{
+    "PRD_FOLDER" : {
+      "Type" : "SimpleFolder",
+      "ControlmServer" : "vmctmsrvprdwe01",
+      "OrderMethod" : "Manual"  
+    }
+  }
