@@ -14,6 +14,6 @@ def validate_yaml(file_path):
         print(f'Success: {file_path} is valid')
 
 if __name__ == "__main__":
-    files_to_check = ['vars/acc/main.yml', 'vars/prd/main.yml', 'vars/tst/main.yml']
+    files_to_check = ['vars/acc/main.yml', 'vars/prd/main.yml', 'vars/test/main.yml']
     for file in files_to_check:
         validate_yaml(file)
