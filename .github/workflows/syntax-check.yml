@@ -13,9 +13,13 @@ jobs:
       run: |
         pip install yamllint
         npm install -g jsonlint
+        pip install pyyaml
 
     - name: Run yamllint
       run: |
         yamllint vars/acc vars/prd vars/test
+
+    - name: Run Python script to validate YAML files
+      run: python validate.py
 
 
