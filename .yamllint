@@ -11,7 +11,7 @@ rules:
   # Enable or customize rules
   indentation:
     level: error
-    spaces: 2
+    spaces: 1
 
 
 
