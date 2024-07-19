@@ -1,5 +1,7 @@
 name: Syntax Check
 
+on: [pull request]
+
 jobs:
   syntax-check:
     runs-on: ubuntu-latest
