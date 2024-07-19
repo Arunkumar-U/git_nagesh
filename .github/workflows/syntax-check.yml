@@ -1,6 +1,6 @@
 name: Syntax Check
 
-on: [pull request]
+on: [pull_request]
 
 jobs:
   syntax-check:
