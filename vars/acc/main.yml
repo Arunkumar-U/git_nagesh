@@ -1,0 +1,9 @@
+---
+
+#Add the modified file names to the below list
+
+jobFolderNames: 
+ - CONTROL-M_JAVA.json
+ - CONTROL-M_JAVA_ACC.json
+
+
