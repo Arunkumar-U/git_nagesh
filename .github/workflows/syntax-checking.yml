@@ -1,0 +1,76 @@
+name: Syntax Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  syntax-check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install yamllint and jsonlint
+      run: |
+        pip install yamllint
+        npm install -g jsonlint
+
+    - name: Run yamllint
+      run: |
+        yamllint vars/acc vars/prd vars/test
+
+    - name: Validate vars/acc/main.yml structure
+      run: |
+        cat vars/acc/main.yml | grep "jobFolderNames:" && \
+        yamllint -d "{extends: default, rules: {line-length: disable, trailing-spaces: disable}}" vars/acc/main.yml && \
+        python -c "
+import yaml
+import sys
+with open('vars/acc/main.yml', 'r') as file:
+    data = yaml.safe_load(file)
+    if 'jobFolderNames' not in data or not isinstance(data['jobFolderNames'], list):
+        print('Error: jobFolderNames key is missing or is not a list in vars/acc/main.yml')
+        sys.exit(1)
+    for item in data['jobFolderNames']:
+        if not isinstance(item, str) or not item.endswith('.json'):
+            print(f'Error: {item} in vars/acc/main.yml is not a valid JSON file name')
+            sys.exit(1)
+"
+
+    - name: Validate vars/prd/main.yml structure
+      run: |
+        cat vars/prd/main.yml | grep "jobFolderNames:" && \
+        yamllint -d "{extends: default, rules: {line-length: disable, trailing-spaces: disable}}" vars/prd/main.yml && \
+        python -c "
+import yaml
+import sys
+with open('vars/prd/main.yml', 'r') as file:
+    data = yaml.safe_load(file)
+    if 'jobFolderNames' not in data or not isinstance(data['jobFolderNames'], list):
+        print('Error: jobFolderNames key is missing or is not a list in vars/prd/main.yml')
+        sys.exit(1)
+    for item in data['jobFolderNames']:
+        if not isinstance(item, str) or not item.endswith('.json'):
+            print(f'Error: {item} in vars/prd/main.yml is not a valid JSON file name')
+            sys.exit(1)
+"
+
+    - name: Validate vars/tst/main.yml structure
+      run: |
+        cat vars/tst/main.yml | grep "jobFolderNames:" && \
+        yamllint -d "{extends: default, rules: {line-length: disable, trailing-spaces: disable}}" vars/tst/main.yml && \
+        python -c "
+import yaml
+import sys
+with open('vars/tst/main.yml', 'r') as file:
+    data = yaml.safe_load(file)
+    if 'jobFolderNames' not in data or not isinstance(data['jobFolderNames'], list):
+        print('Error: jobFolderNames key is missing or is not a list in vars/tst/main.yml')
+        sys.exit(1)
+    for item in data['jobFolderNames']:
+        if not isinstance(item, str) or not item.endswith('.json'):
+            print(f'Error: {item} in vars/tst/main.yml is not a valid JSON file name')
+            sys.exit(1)
+"

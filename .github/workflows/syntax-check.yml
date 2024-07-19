@@ -1,8 +1,4 @@
 name: Syntax Check
-on:
-  pull_request:
-    branches:
-      - main
 
 jobs:
   syntax-check:
