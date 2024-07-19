@@ -1,6 +1,8 @@
 name: Syntax Check
-
-on: [pull_request]
+on:
+  pull_request:
+    branches:
+      - main
 
 jobs:
   syntax-check:
@@ -9,12 +11,21 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install yamllint
+    - name: Install yamllint and jsonlint
       run: |
         pip install yamllint
+        npm install -g jsonlint
+
+    - name: Verify installations
+        run: |
+          yamllint --version
+          jsonlint --version
+
+    - name: List system-wide installed packages using yum
+        run: yum list installed
 
     - name: Run yamllint
       run: |
-        yamllint ansible/vars/main.yml .github/workflows/main.yml
+        yamllint vars/acc vars/prd vars/test
 
 
