@@ -16,14 +16,6 @@ jobs:
         pip install yamllint
         npm install -g jsonlint
 
-    - name: Verify installations
-      run: |
-        yamllint --version
-        jsonlint --version
-
-    - name: List system-wide installed packages using yum
-      run: yum list installed
-
     - name: Run yamllint
       run: |
         yamllint vars/acc vars/prd vars/test
