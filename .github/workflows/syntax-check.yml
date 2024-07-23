@@ -1,6 +1,6 @@
 name: Syntax Check
 
-on: [pull_request]
+on: push
 
 jobs:
   syntax-check:
@@ -26,6 +26,7 @@ jobs:
         ls -lrt
         chmod 755 vars/yaml_precheck.sh
         cat vars/yaml_precheck.sh
+        cat vars/test/main.yml
         chmod 755 vars/yaml_precheck.sh
 
     - name: Check the prevalidation for the yaml file
