@@ -21,6 +21,11 @@ jobs:
 
     # - name: Run Python script to validate YAML files
     #   run: python validate.py
+    - name: Ensuring the file is checkout to the runner
+      run: |
+        ls -lrt
+        chmod 755 vars/yaml_precheck.sh
+        cat vars/yaml_precheck.sh
 
     - name: Check the prevalidation for the yaml file
       run: |
