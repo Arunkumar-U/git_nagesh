@@ -44,5 +44,5 @@ check_yaml_file() {
     fi
 }
 # Main script execution
-yaml_file="/root/main.yml"
+yaml_file="/vars/test/main.yml"
 check_yaml_file "$yaml_file"
