@@ -25,13 +25,16 @@ jobs:
       run: |
         ls -lrt
         chmod 755 vars/yaml_precheck.sh
-        cat vars/yaml_precheck.sh
         cat vars/test/main.yml
+        cd vars/test/
+        pwd
         chmod 755 vars/yaml_precheck.sh
-
-    - name: Check the prevalidation for the yaml file
-      run: |
+        ls -lrt
         cd vars/
         ./yaml_precheck.sh
+
+
+    
+        
 
 
