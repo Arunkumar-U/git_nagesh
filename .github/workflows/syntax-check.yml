@@ -9,15 +9,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # - name: Install yamllint and jsonlint
-    #   run: |
-    #     pip install yamllint
-    #     npm install -g jsonlint
-    #     pip install pyyaml
+    - name: Install yamllint and jsonlint
+      run: |
+        pip install yamllint
+        npm install -g jsonlint
+        pip install pyyaml
 
-    # - name: Run yamllint
-    #   run: |
-    #     yamllint vars/acc vars/prd vars/test
+    - name: Run yamllint
+      run: |
+        yamllint test.yml
 
     # - name: Run Python script to validate YAML files
     #   run: python validate.py

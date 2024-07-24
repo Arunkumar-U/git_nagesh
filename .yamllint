@@ -1,29 +1,29 @@
-extends: default
-
-rules:
-  # Disable rules you don't care about
-  line-length: disable
-  trailing-spaces: disable
-  empty-lines: disable
-  truthy: disable
-  new-line-at-end-of-file: disable
-
-  # Enable or customize rules
-  indentation:
-    level: error
-    spaces: 1
-
-
-
-
 # extends: default
 
 # rules:
+#   # Disable rules you don't care about
+#   line-length: disable
 #   trailing-spaces: disable
-#   truthy: disable
 #   empty-lines: disable
-#   new-line-at-end-of-file: enable
-#   line-length:
-#     max: 120
-#     level: warning
-#   # You can add other rules and configurations as needed
+#   truthy: disable
+#   new-line-at-end-of-file: disable
+
+#   # Enable or customize rules
+#   indentation:
+#     level: error
+#     spaces: 1
+
+
+
+
+extends: default
+
+rules:
+  trailing-spaces: disable
+  truthy: disable
+  empty-lines: disable
+  new-line-at-end-of-file: enable
+  line-length:
+    max: 120
+    level: warning
+  # You can add other rules and configurations as needed
