@@ -31,11 +31,10 @@ jobs:
         cd ${path}/prd; chmod 755 main.yml; ls -lrt
         cd ${path}; chmod 755 yaml_precheck.sh; ls -lrt
         cd ${path}
-        ./yaml_precheck.sh
 
-        
-        #./yaml_precheck.sh ${path}/test/main.yml ${path}/acc/main.yml ${path}/prd/main.yml
+        ./yaml_precheck.sh ${path}/test/main.yml ${path}/acc/main.yml ${path}/prd/main.yml
 
+        #./yaml_precheck.sh
 
         # chmod 755 /home/runner/work/git_nagesh/git_nagesh/vars/yaml_precheck.sh
         # chmod 755 /home/runner/work/git_nagesh/git_nagesh/vars/test/main.yml
