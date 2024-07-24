@@ -44,5 +44,15 @@ check_yaml_file() {
     fi
 }
 # Main script execution
-yaml_file="/home/runner/work/git_nagesh/git_nagesh/vars/test/main.yml"
-check_yaml_file "$yaml_file"
+# yaml_file="/home/runner/work/git_nagesh/git_nagesh/vars/test/main.yml"
+# check_yaml_file "$yaml_file"
+
+# Main script execution
+if [ "$#" -eq 0 ]; then
+    echo "No files provided. Please specify the YAML files to check."
+    exit 1
+fi
+
+for yaml_file in "$@"; do
+    check_yaml_file "$yaml_file"
+done

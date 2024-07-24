@@ -24,10 +24,19 @@ jobs:
     - name: Ensuring the file is checkout to the runner
       run: |
         ls -lrt
-        chmod 755 /home/runner/work/git_nagesh/git_nagesh/vars/yaml_precheck.sh
-        chmod 755 /home/runner/work/git_nagesh/git_nagesh/vars/test/main.yml
-        ls -lrt
-        /home/runner/work/git_nagesh/git_nagesh/vars/yaml_precheck.sh
+        path='/home/runner/work/git_nagesh/git_nagesh/vars/'
+        echo "${path}"
+        
+        # chmod 755 /home/runner/work/git_nagesh/git_nagesh/vars/yaml_precheck.sh
+        # chmod 755 /home/runner/work/git_nagesh/git_nagesh/vars/test/main.yml
+        # ls -lrt
+
+
+        # /home/runner/work/git_nagesh/git_nagesh/vars/yaml_precheck.sh
+
+
+
+
         
 
 
