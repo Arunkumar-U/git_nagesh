@@ -25,9 +25,9 @@ jobs:
       run: |
         path='/home/runner/work/git_nagesh/git_nagesh/vars/'
         echo "${path}"
-        cd vars/acc; ls -lrt; cat main.yml
-        cd vars/test; ls -lrt; cat main.yml
-        cd vars/prd; ls -lrt; cat main.yml
+        cd ${path}/acc; ls -lrt; cat main.yml
+        cd ${path}/test; ls -lrt; cat main.yml
+        cd ${path}/prd; ls -lrt; cat main.yml
 
 
         # chmod 755 /home/runner/work/git_nagesh/git_nagesh/vars/yaml_precheck.sh
