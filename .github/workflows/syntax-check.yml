@@ -29,9 +29,11 @@ jobs:
         cd ${path}/test; chmod 755 main.yml; ls -lrt
         cd ${path}/acc; chmod 755 main.yml; ls -lrt
         cd ${path}/prd; chmod 755 main.yml; ls -lrt
-
+        cd ${path}; chmod 755 yaml_precheck.sh; ls -lrt
         cd ${path}
         ./yaml_precheck.sh
+
+        
         #./yaml_precheck.sh ${path}/test/main.yml ${path}/acc/main.yml ${path}/prd/main.yml
 
 
