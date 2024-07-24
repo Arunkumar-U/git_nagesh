@@ -21,13 +21,18 @@ jobs:
 
     # - name: Run Python script to validate YAML files
     #   run: python validate.py
+
     - name: Ensuring the file is checkout to the runner
       run: |
         path='/home/runner/work/git_nagesh/git_nagesh/vars/'
         echo "${path}"
-        cd ${path}/acc; ls -lrt; cat main.yml
-        cd ${path}/test; ls -lrt; cat main.yml
-        cd ${path}/prd; ls -lrt; cat main.yml
+        cd c; chmod 755 main.yml; ls -lrt
+        cd ${path}/test; chmod 755 main.yml; ls -lrt
+        cd ${path}/prd; chmod 755 main.yml; ls -lrt
+
+        cd ${path}
+        ./yaml_precheck.sh
+        #./yaml_precheck.sh ${path}/test/main.yml ${path}/acc/main.yml ${path}/prd/main.yml
 
 
         # chmod 755 /home/runner/work/git_nagesh/git_nagesh/vars/yaml_precheck.sh
