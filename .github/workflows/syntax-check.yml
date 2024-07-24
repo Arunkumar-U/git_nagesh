@@ -23,10 +23,11 @@ jobs:
     #   run: python validate.py
     - name: Ensuring the file is checkout to the runner
       run: |
-        ls -lrt
         path='/home/runner/work/git_nagesh/git_nagesh/vars/'
         echo "${path}"
-        
+        cd vars/acc ; ls -lrt;
+
+
         # chmod 755 /home/runner/work/git_nagesh/git_nagesh/vars/yaml_precheck.sh
         # chmod 755 /home/runner/work/git_nagesh/git_nagesh/vars/test/main.yml
         # ls -lrt
