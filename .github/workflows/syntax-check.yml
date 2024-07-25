@@ -32,7 +32,9 @@ jobs:
           npm install -g jsonlint
 
       - name: Verify jsonlint installation
-        run: jsonlint --version || true
+        run: |
+          jsonlint --version
+          echo "jsonlint version command exited with code $?"
 
 
       # - name: Installing node.js and npm
