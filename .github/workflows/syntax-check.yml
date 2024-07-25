@@ -33,8 +33,12 @@ jobs:
 
       - name: Verify jsonlint installation
         run: |
-          jsonlint --version
-          echo "jsonlint version command exited with code $?"
+          jsonlint --version || true
+
+      - name: Validating the json file
+        run: |
+          jsonlint vars/valid.json
+          
 
 
       # - name: Installing node.js and npm
