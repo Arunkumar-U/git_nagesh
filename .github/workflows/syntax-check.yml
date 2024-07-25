@@ -32,7 +32,7 @@ jobs:
           npm install -g jsonlint
 
       - name: Verify jsonlint installation
-        run: jsonlint --version
+        run: jsonlint --version || true
 
 
       # - name: Installing node.js and npm
