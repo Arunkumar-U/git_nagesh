@@ -37,7 +37,7 @@ jobs:
 
       - name: Validating the json file
         run: |
-          jsonlint vars/valid.json
+          jsonlint vars/invalid.json
           
 
 
