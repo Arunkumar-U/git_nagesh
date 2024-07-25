@@ -34,9 +34,9 @@ check_yaml_file() {
     done < "$file"
 
     if [ ${#errors[@]} -eq 0 ]; then
-        echo "YAML ${file} is valid."
+        echo "The file (${file}) is valid."
     else
-        echo "Please check the indentation/foldername"
+        echo "The file (${file}) is invalid, Please check the indentation/Jobfoldldername"
         for error in "${errors[@]}"; do
           echo "$error"
         done

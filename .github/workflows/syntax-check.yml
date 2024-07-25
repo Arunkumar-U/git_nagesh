@@ -25,14 +25,20 @@ jobs:
           sudo npm install -g jsonlint
           jsonlint --version || true
 
-      - name: Validating the json file
+      # - name: Validating the json file
+      #   run: |
+      #     jsonlint templates/ctmjobs/acc/CONTROL-M_JAVA_ACC.json
+
+      - name: Validating the json file 
         run: |
-          jsonlint templates/ctmjobs/acc/CONTROL-M_JAVA_ACC.json
+          path='/home/runner/work/git_nagesh/git_nagesh/vars'
+          cd ${path}; chmod 755 json_precheck.sh
+          ./json_precheck.sh
 
 
       - name: Ensuring the file is checkout to the runner
         run: |
-          path='/home/runner/work/git_nagesh/git_nagesh/vars/'
+          path='/home/runner/work/git_nagesh/git_nagesh/vars'
           echo "${path}"
           cd ${path}/test; chmod 755 main.yml; ls -lrt
           cd ${path}/acc; chmod 755 main.yml; ls -lrt
