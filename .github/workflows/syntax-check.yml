@@ -9,6 +9,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Installing node.js and npm
+        run: |
+          sudo apt-get update
+          curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+          sudo apt-get install -y nodejs
+
+      - name: Ensuring node.js and npm was installed
+        run: |
+          node --version
+          npm --version
+
+      - name: Installing jsonlint and ensuring the version
+        run: |
+          sudo npm install -g jsonlint
+          jsonlint --version || true
+
+      - name: Validating the json file
+        run: |
+          jsonlint templates/ctmjobs/acc/CONTROL-M_JAVA_ACC.json
+
 
       # - name: Ensuring the file is checkout to the runner
       #   run: |
@@ -41,25 +61,7 @@ jobs:
           
 
 
-      - name: Installing node.js and npm
-        run: |
-          sudo apt-get update
-          curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-
-      - name: Ensuring node.js and npm was installed
-        run: |
-          node --version
-          npm --version
-
-      - name: Installing jsonlint and ensuring the version
-        run: |
-          sudo npm install -g jsonlint
-          jsonlint --version || true
-
-      - name: Validating the yaml file
-        run: |
-          jsonlint templates/ctmjobs/acc/ACC_FOLDER.json
+      
 
 
 
