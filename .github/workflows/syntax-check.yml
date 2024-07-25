@@ -59,7 +59,7 @@ jobs:
 
       - name: Validating the yaml file
         run: |
-          jsonlint templates/ctmjobs/acc/ACC_fOLDER.json
+          jsonlint templates/ctmjobs/acc/ACC_FOLDER.json
 
 
 
