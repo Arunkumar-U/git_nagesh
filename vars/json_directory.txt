@@ -1,1 +1,1 @@
-/home/runner/work/git_nagesh/git_nagesh/templates/ctmjobs/acc
+/home/runner/work/git_nagesh/git_nagesh/templates/ctmjobs/test
