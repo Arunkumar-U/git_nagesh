@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Read the directory containing JSON files from json_directory.txt
-JSON_DIR=$(cat /vars/json_directory.txt)
+JSON_DIR=$(cat /home/runner/work/git_nagesh/git_nagesh/vars/json_directory.txt)
 
 # Check if the directory exists
 if [ ! -d "$JSON_DIR" ]; then
