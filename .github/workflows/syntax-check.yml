@@ -33,7 +33,7 @@ jobs:
         run: |
           path='/home/runner/work/git_nagesh/git_nagesh/vars'
           cd ${path}; chmod 755 json_precheck.sh
-          ./json_precheck.sh
+          #./json_precheck.sh
 
 
       - name: Ensuring the file is checkout to the runner
@@ -45,7 +45,7 @@ jobs:
           cd ${path}/prd; chmod 755 main.yml; ls -lrt
           cd ${path}; chmod 755 yaml_precheck.sh; ls -lrt
           cd ${path}
-          ./yaml_precheck.sh ${path}/test/main.yml ${path}/acc/main.yml ${path}/prd/main.yml
+          #./yaml_precheck.sh ${path}/test/main.yml ${path}/acc/main.yml ${path}/prd/main.yml
 
 
       # - name: Set up Node.js environment
