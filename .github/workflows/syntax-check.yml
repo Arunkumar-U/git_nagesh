@@ -1,6 +1,9 @@
 name: Syntax Check
 
-on: push
+on:
+  push:
+    branches:
+      - arun
 
 jobs:
   syntax-check:
