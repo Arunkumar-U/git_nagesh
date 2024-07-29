@@ -20,7 +20,7 @@
         "DocumentationFile" : {
           "FileName" : "CHG0096060"
         },
-        When" : {
+        "When" : {
           "WeekDays" : [ "NONE" ],
           "Months" : [ "NONE" ],
           "MonthDays" : [ "NONE" ],
