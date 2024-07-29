@@ -10,7 +10,7 @@
     "Host": "vmctmsrvtstwe01.tooling.shd.eu-int-aholddelhaize.com",
     "CreatedBy": "pnl0ll17",
     "RunAs": "test1",
-    "Application": "JAC",
+    "Application": "JAC"
     "Command": "sleep 5",
     "When": {
       "WeekDays": [
