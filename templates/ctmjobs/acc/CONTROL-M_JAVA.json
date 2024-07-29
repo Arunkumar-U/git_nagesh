@@ -6,7 +6,7 @@
       "CTMJAVA_CHECKING_COMPRESSING" : {
         "Type" : "Job:Command",
         "PreCommand" : "hostname",
-        "PostCommand" : "exit 0",
+        "PostCommand" : "exit",
         "SubApplication" : "JAVA_CHECK",
         "Priority" : "Very Low",
         "RunAsDummy" : true,
