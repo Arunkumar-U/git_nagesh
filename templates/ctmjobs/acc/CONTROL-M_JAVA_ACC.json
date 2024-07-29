@@ -101,7 +101,7 @@
           "Months" : [ "NONE" ],
           "MonthDays" : [ "NONE" ],
           "DaysRelation" : "OR"
-        }
+        },
         "JAVA_CHECKING" : {
           "Type" : "Resource:Pool",
           "Quantity" : "2"
