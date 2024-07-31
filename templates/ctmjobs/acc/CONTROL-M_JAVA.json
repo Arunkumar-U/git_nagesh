@@ -1,7 +1,7 @@
 {
     "CONTROL-M_JAVA" : {
       "Type" : "SimpleFolder",
-      "ControlmServer" : "vmctmsrvaccwe01",
+      "ControlmServer" : "vmctmsrvaccwe01"
       "OrderMethod" : "Manual",
       "CTMJAVA_CHECKING_COMPRESSING" : {
         "Type" : "Job:Command",
