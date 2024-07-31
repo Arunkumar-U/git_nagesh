@@ -1,43 +1,13 @@
 name: Syntax Check
 
-on:
-  push:
-    branches:
-      - arun
-
+on: [ pull_request ]
+  
 jobs:
   syntax-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Installing node.js and npm
-        run: |
-          sudo apt-get update
-          curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-          sudo apt-get install -y nodejs
-
-      - name: Ensuring node.js and npm was installed
-        run: |
-          node --version
-          npm --version
-
-      - name: Installing jsonlint and ensuring the version
-        run: |
-          sudo npm install -g jsonlint
-          jsonlint --version || true
-
-      # - name: Validating the json file
-      #   run: |
-      #     jsonlint templates/ctmjobs/acc/CONTROL-M_JAVA_ACC.json
-
-      - name: Validating the json file 
-        run: |
-          path='/home/runner/work/git_nagesh/git_nagesh/vars'
-          cd ${path}; chmod 755 json_precheck.sh
-          #./json_precheck.sh
-
 
       - name: Ensuring the file is checkout to the runner
         run: |
@@ -48,8 +18,33 @@ jobs:
           cd ${path}/prd; chmod 755 main.yml; ls -lrt
           cd ${path}; chmod 755 yaml_precheck.sh; ls -lrt
           cd ${path}
-          #./yaml_precheck.sh ${path}/test/main.yml ${path}/acc/main.yml ${path}/prd/main.yml
+          ./yaml_precheck.sh ${path}/test/main.yml ${path}/acc/main.yml ${path}/prd/main.yml
 
+      # - name: Installing node.js and npm
+      #   run: |
+      #     sudo apt-get update
+      #     curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+      #     sudo apt-get install -y nodejs
+
+      # - name: Ensuring node.js and npm was installed
+      #   run: |
+      #     node --version
+      #     npm --version
+
+      # - name: Installing jsonlint and ensuring the version
+      #   run: |
+      #     sudo npm install -g jsonlint
+      #     jsonlint --version || true
+
+
+      # - name: Validating the json file 
+      #   run: |
+      #     path='/home/runner/work/git_nagesh/git_nagesh/vars'
+      #     cd ${path}; chmod 755 json_precheck.sh
+      #     ./json_precheck.sh
+
+
+   
 
       # - name: Set up Node.js environment
       #   uses: actions/setup-node@v3
