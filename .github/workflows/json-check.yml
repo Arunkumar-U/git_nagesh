@@ -52,16 +52,16 @@ jobs:
             local file=$1
 
             # Find all job objects in the JSON file
-            job_paths=$(jq -r 'paths | select(.[-1] == "DocumentationFile" and .[-2] | test("^CTM")) | map(tostring) | join(".")' "$file")
+            job_paths=$(jq -r 'paths | select(.[-1] == "DocumentationFile" and .[-2] | test("^(CTM)")) | map(tostring) | join(".")' "$file")
 
             if [ -z "$job_paths" ]; then
               echo "File $file does not contain any 'DocumentationFile.FileName' keys."
               ((errors++))
             else
               for path in $job_paths; do
-                value=$(jq -r ".${path}" "$file")
+                value=$(jq -r ".${path}.FileName" "$file")
                 if [ -z "$value" ] || [ "$value" == "null" ]; then
-                  echo "Invalid or empty 'FileName' value at ${path} in $file"
+                  echo "Invalid or empty 'FileName' value at ${path}.FileName in $file"
                   ((errors++))
                 fi
               done
