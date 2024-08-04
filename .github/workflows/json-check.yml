@@ -33,3 +33,54 @@ jobs:
             exit 1
           fi
         shell: bash -l {0} -v
+
+  json-key-value-check:
+    runs-on: ubuntu-latest
+    needs: json-syntax-check
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate Key-Value Pair
+        run: |
+          git fetch origin main
+          errors=0
+
+          check_documentation_file() {
+            local file=$1
+
+            # Check for DocumentationFile.FileName in each object
+            invalid_files=0
+
+            # Use jq to get the paths of all DocumentationFile.FileName
+            paths=$(jq -r 'paths | select(.[-1] == "FileName") | map(tostring) | join(".")' "$file")
+
+            if [ -z "$paths" ]; then
+              echo "File $file does not contain any 'DocumentationFile.FileName' keys."
+              ((invalid_files++))
+            else
+              for path in $paths; do
+                value=$(jq -r ".$path" "$file")
+                if [ -z "$value" ] || [ "$value" == "null" ]; then
+                  echo "Invalid or empty 'FileName' value at $path in $file"
+                  ((invalid_files++))
+                fi
+              done
+            fi
+
+            if ((invalid_files)); then
+              ((errors++))
+            fi
+          }
+
+          for file in $(git diff --name-only origin/main...HEAD -- '*.json'); do
+            check_documentation_file "$file"
+          done
+
+          if ((errors)); then
+            echo "$errors files had key-value pair errors"
+            exit 1
+          fi
+        shell: bash -l      
