@@ -2,7 +2,7 @@
     "ACC_FOLDER" : {
       "Type" : "SimpleFolder",
       "ControlmServer" : "vmctmsrvaccwe01",
-      "OrderMethod" : "Manual"
+      "OrderMethod" : "Manual",
       
       
     }
