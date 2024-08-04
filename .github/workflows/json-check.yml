@@ -83,4 +83,4 @@ jobs:
             echo "$errors files had key-value pair errors"
             exit 1
           fi
-        shell: bash -l      
+        shell: bash -l {0} -v      
