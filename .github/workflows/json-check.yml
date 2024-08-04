@@ -59,8 +59,8 @@ jobs:
               ((errors++))
             else
               for path in $job_paths; do
-                value=$(jq -r ".${path}.FileName" "$file")
-                if [ -z "$value" ] || [ "$value" == "null" ]; then
+                value=$(jq -r ".${path}.FileName // empty" "$file")
+                if [ -z "$value" ]; then
                   echo "Invalid or empty 'FileName' value at ${path}.FileName in $file"
                   ((errors++))
                 fi
@@ -70,7 +70,7 @@ jobs:
             # Ensure every job contains DocumentationFile.FileName key
             job_names=$(jq -r 'to_entries | map(select(.value.Type == "Job:Command")) | map(.key)[]' "$file")
             for job in $job_names; do
-              if ! jq -e ".${job}.DocumentationFile.FileName" "$file" >/dev/null 2>&1; then
+              if ! jq -e ".${job}.DocumentationFile.FileName // empty" "$file" >/dev/null 2>&1; then
                 echo "Job '${job}' in file '$file' does not contain the 'DocumentationFile.FileName' key"
                 ((errors++))
               fi
