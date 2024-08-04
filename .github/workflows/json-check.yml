@@ -51,28 +51,30 @@ jobs:
           check_documentation_file() {
             local file=$1
 
-            # Check for DocumentationFile.FileName in each object
-            invalid_files=0
+            # Find all job objects in the JSON file
+            job_paths=$(jq -r 'paths | select(.[-1] == "DocumentationFile" and .[-2] | test("^CTM")) | map(tostring) | join(".")' "$file")
 
-            # Use jq to get the paths of all DocumentationFile.FileName
-            paths=$(jq -r 'paths | select(.[-1] == "FileName") | map(tostring) | join(".")' "$file")
-
-            if [ -z "$paths" ]; then
+            if [ -z "$job_paths" ]; then
               echo "File $file does not contain any 'DocumentationFile.FileName' keys."
-              ((invalid_files++))
+              ((errors++))
             else
-              for path in $paths; do
-                value=$(jq -r ".$path" "$file")
+              for path in $job_paths; do
+                value=$(jq -r ".${path}" "$file")
                 if [ -z "$value" ] || [ "$value" == "null" ]; then
-                  echo "Invalid or empty 'FileName' value at $path in $file"
-                  ((invalid_files++))
+                  echo "Invalid or empty 'FileName' value at ${path} in $file"
+                  ((errors++))
                 fi
               done
             fi
 
-            if ((invalid_files)); then
-              ((errors++))
-            fi
+            # Ensure every job contains DocumentationFile.FileName key
+            job_names=$(jq -r 'to_entries | map(select(.value.Type == "Job:Command")) | map(.key)[]' "$file")
+            for job in $job_names; do
+              if ! jq -e ".${job}.DocumentationFile.FileName" "$file" >/dev/null 2>&1; then
+                echo "Job '${job}' in file '$file' does not contain the 'DocumentationFile.FileName' key"
+                ((errors++))
+              fi
+            done
           }
 
           for file in $(git diff --name-only origin/main...HEAD -- '*.json'); do
@@ -83,4 +85,46 @@ jobs:
             echo "$errors files had key-value pair errors"
             exit 1
           fi
-        shell: bash -l {0} -v      
+        shell: bash -l {0} -v
+
+      # - name: Validate Key-Value Pair
+      #   run: |
+      #     git fetch origin main
+      #     errors=0
+
+      #     check_documentation_file() {
+      #       local file=$1
+
+      #       # Check for DocumentationFile.FileName in each object
+      #       invalid_files=0
+
+      #       # Use jq to get the paths of all DocumentationFile.FileName
+      #       paths=$(jq -r 'paths | select(.[-1] == "FileName") | map(tostring) | join(".")' "$file")
+
+      #       if [ -z "$paths" ]; then
+      #         echo "File $file does not contain any 'DocumentationFile.FileName' keys."
+      #         ((invalid_files++))
+      #       else
+      #         for path in $paths; do
+      #           value=$(jq -r ".$path" "$file")
+      #           if [ -z "$value" ] || [ "$value" == "null" ]; then
+      #             echo "Invalid or empty 'FileName' value at $path in $file"
+      #             ((invalid_files++))
+      #           fi
+      #         done
+      #       fi
+
+      #       if ((invalid_files)); then
+      #         ((errors++))
+      #       fi
+      #     }
+
+      #     for file in $(git diff --name-only origin/main...HEAD -- '*.json'); do
+      #       check_documentation_file "$file"
+      #     done
+
+      #     if ((errors)); then
+      #       echo "$errors files had key-value pair errors"
+      #       exit 1
+      #     fi
+      #   shell: bash -l {0} -v      
