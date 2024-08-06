@@ -53,13 +53,12 @@ jobs:
           errors=0
           for file in $(git diff --name-only origin/main...HEAD -- '*.json'); do
             echo "Processing file: $file"
-            folders=$(jq -r 'keys[]' "$file")
-            for folder in $folders; do
-              echo "Found folder: $folder"
-              jobs=$(jq -r --arg folder "$folder" '.[$folder] | to_entries | .[] | select(.value.Type == "Job:Command") | .key' "$file")
-              for job in $jobs; do
-                echo "Found job: $job in folder: $folder"
-              done
+            folder=$(jq -r 'keys[0]' "$file")
+            echo "Found folder: $folder"
+            jobs=$(jq -r --arg folder "$folder" '.[$folder] | to_entries | .[] | select(.value.Type == "Job:Command") | .key' "$file")
+            for job in $jobs; do
+              echo "Found job: $job in folder: $folder"
             done
           done
         shell: bash
+
