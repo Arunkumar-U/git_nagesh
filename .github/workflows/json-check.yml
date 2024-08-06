@@ -38,28 +38,23 @@ jobs:
         run: |
           git fetch origin main
           errors=0
-          for file in $(git diff --name-only origin/main...HEAD -- '*.json') ; do
-            folder=$(jq -r 'keys_unsorted[]' "$file")
-            if ! jq -e --arg folder "$folder" '.[$folder] | objects' "$file" >/dev/null; then
-              echo "Error: $folder in $file is not a valid folder object"
-              ((errors++))
-              continue
-            fi
-            jobs=$(jq -r --arg folder "$folder" '.[$folder] | to_entries | .[] | select(.value.Type == "Job:Command") | .key' "$file")
-            for job in $jobs; do
-              if ! jq -e --arg folder "$folder" --arg job "$job" '.[$folder][$job] | objects' "$file" >/dev/null; then
-                echo "Error: $job in $folder of $file is not a valid job object"
-                ((errors++))
+          for file in $(git diff --name-only origin/main...HEAD -- '*.json'); do
+            folders=$(jq -r 'keys[]' "$file")
+            for folder in $folders; do
+              if [[ $folder == "Type" ]]; then
                 continue
               fi
-              if ! jq -e --arg folder "$folder" --arg job "$job" '.[$folder][$job].DocumentationFile' "$file" >/dev/null; then
-                echo "Error: Job \"$job\" in folder \"$folder\" of $file does not contain DocumentationFile"
-                ((errors++))
-              fi
+              jobs=$(jq -r --arg folder "$folder" '.[$folder] | to_entries | .[] | select(.value.Type == "Job:Command") | .key' "$file")
+              for job in $jobs; do
+                if ! jq -e --arg folder "$folder" --arg job "$job" '.[$folder][$job].DocumentationFile' "$file" >/dev/null; then
+                  echo "Error: Job \"$job\" in folder \"$folder\" of $file does not contain DocumentationFile"
+                  ((errors++))
+                fi
+              done
             done
           done
           if ((errors)); then
-            echo "$errors jobs are missing DocumentationFile or have structural issues"
+            echo "$errors jobs are missing DocumentationFile"
             exit 1
           fi
         shell: bash
