@@ -34,7 +34,7 @@ jobs:
           fi
         shell: bash -l {0} -v
 
-  - name: Check for DocumentationFile Key
+      - name: Check for DocumentationFile Key
         run: |
           git fetch origin main
           errors=0
