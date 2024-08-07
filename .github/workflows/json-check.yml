@@ -65,7 +65,7 @@ jobs:
           errors=0
           path='/home/runner/work/git_nagesh/git_nagesh'
           cd ${path}
-          for file in ${path}/templates/ctmjobs/acc/* ; do
+          for file in ${path}/templates/ctmjobs/test/* ; do
             echo $file
             ${path}/vars/Documentation_FileName_check.sh "$file"
             
