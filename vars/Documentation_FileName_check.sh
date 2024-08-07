@@ -45,7 +45,7 @@ if [ ${#missing_or_empty_file_names[@]} -ne 0 ]; then
   for item in "${missing_or_empty_file_names[@]}"; do
     echo "$item"
   done
- 
+  exit 1
 else
   echo "All objects contain the DocumentationFile object with a non-empty FileName."
 fi
