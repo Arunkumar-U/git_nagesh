@@ -63,11 +63,11 @@ jobs:
         run: |
           git fetch origin main
           errors=0
-          path='/home/runner/work/git_nagesh/git_nagesh/'
+          path='/home/runner/work/git_nagesh/git_nagesh'
           cd ${path}
           for file in ${path}/templates/ctmjobs/acc/* ; do
             cat $file
-            ./Documentation_FileName_check.sh "$file"
+            ${path}/vars/Documentation_FileName_check.sh "$file"
 
             echo "processing with next one"
            
