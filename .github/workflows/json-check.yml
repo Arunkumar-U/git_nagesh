@@ -66,15 +66,18 @@ jobs:
           path='/home/runner/work/git_nagesh/git_nagesh/vars'
           cd ${path}
           for file in $(git diff --name-only origin/main...HEAD -- '*.json') ; do
+            echo "$file"
             ./Documentation_FileName_check.sh "$file"
             if [ $? -ne 0 ]; then
-              ((errors++))
+              exit 1
             fi
           done
-          if ((errors)); then
-            echo "$errors files had documentation file name errors"
-            exit 1
-          fi
+          # if ((errors)); then
+          #   echo "$errors files had documentation file name errors"
+          #   exit 1
+          # else 
+          #  echo "All looks good"
+          # fi
         shell: bash -l {0} -v
 
 
