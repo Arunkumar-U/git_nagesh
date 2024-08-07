@@ -133,7 +133,7 @@
           "DELTODATE" : "%%$CALCDATE %%$DATE -5"
         } ],
         "DocumentationFile" : {
-          "FileName" : "CHG0096060"
+          "FileName" : ""
         },
         "When" : {
           "WeekDays" : [ "NONE" ],

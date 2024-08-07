@@ -1,8 +1,88 @@
 {
-    "ACC_FOLDER" : {
-      "Type" : "SimpleFolder",
-      "ControlmServer" : "vmctmsrvaccwe01",
-      "OrderMethod" : "Manual"    
+  "ACC_FOLDER" : {
+    "Type" : "SimpleFolder",
+    "ControlmServer" : "vmctmsrvaccwe01",
+    "OrderMethod" : "Manual",
+    "A" : {
+      "Type" : "Job:Command",
+      "PreCommand" : "hostname",
+      "PostCommand" : "ls -lrt /controlm/ctm_agent/ctm/;exit 0",
+      "SubApplication" : "JAVA_CHECK",
+      "Priority" : "Very Low",
+      "Host" : "vmctmsrvaccwe01.tooling.shd.eu-int-aholddelhaize.com",
+      "CreatedBy" : "pnl09n6z",
+      "RunOnAllAgentsInGroup" : true,
+      "Description" : "This job will check and compress the folder and it will rename the existing folder-> JRE_For_Restore to BMC_OLD_File",
+      "RunAs" : "middleware",
+      "Application" : "middleware",
+      "Command" : "ls -lrt /controlm/ctm_agent/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE/lib/rt.jar;/controlm/ctm_agent/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE/bin/java  -version;ls -lrt /controlm/ctm_agent/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE_64/lib/rt.jar;/controlm/ctm_agent/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE_64/bin/java -version;cd /controlm/ctm_agent/ctm/;mv JRE_For_Restore BMC_OLD_File;tar -zcvf BMC_OLD_File.tar.gz BMC_OLD_File;chmod 777 BMC_OLD_File.tar.gz;rm -rf BMC_OLD_File;",
+       "DocumentationFile" : {
+        "FileName" : ""
+      },
+      "When" : {
+        "WeekDays" : [ "NONE" ],
+        "Months" : [ "NONE" ],
+        "MonthDays" : [ "NONE" ],
+        "DaysRelation" : "OR"
+      },
+      "JAVA_CHECKING" : {
+        "Type" : "Resource:Pool",
+        "Quantity" : "1"
+      },
+      "IfBase:Folder:CompletionStatus_0" : {
+        "Type" : "If:CompletionStatus",
+        "CompletionStatus" : "OK",
+        "Mail_0" : {
+          "Type" : "Action:Mail",
+          "Subject" : "\"JRE_For_Restore\" RENAMED & COMPRESSED IN %%NODEID for %%$ODATE",
+          "To" : "hari.srinivas@ah.nl;aishwarya.pandiyan@ah.nl;sivachandran.ranganathan@ah.nl;sanjay.kumar@ah.nl;bala.venkatesh@ah.nl",
+          "Message" : "Hi Team,\\n\\nThe \"JRE_For_Restore\" FOLDER IS RENAMED & COMPRESSED as BMC_OLD_File.tar.gz IN SERVER %%NODEID for the date %%$ODATE\\n\\nOnce validated the renamed file will be removed.\\n",
+          "AttachOutput" : true
+        }
+      }
+    },
+    "B" : {
+      "Type" : "Job:Command",
+      "PreCommand" : "hostname",
+      "PostCommand" : "sleep 60",
+      "SubApplication" : "JAVA_CHECK",
+      "Priority" : "Very Low",
+      "Host" : "vmctmsrvaccwe01.tooling.shd.eu-int-aholddelhaize.com",
+      "CreatedBy" : "pnl09n6z",
+      "RunOnAllAgentsInGroup" : true,
+      "Description" : "This job will check and compress the folder and it will rename the existing folder-> JRE_For_Restore to BMC_OLD_File",
+      "RunAs" : "ctmagt",
+      "Application" : "JAVA_CHECK",
+      "Command" : "ls -lrt /opt/ctmagt/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE/lib/rt.jar;/opt/ctmagt/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE/bin/java  -version;ls -lrt /opt/ctmagt/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE_64/lib/rt.jar;/opt/ctmagt/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE_64/bin/java -version;cd /opt/ctmagt/ctm/;mv JRE_For_Restore BMC_OLD_File;tar -zcvf BMC_OLD_File.tar.gz BMC_OLD_File;chown ctmagt:controlm BMC_OLD_File.tar.gz;chmod 777 BMC_OLD_File.tar.gz;rm -rf BMC_OLD_File;ls -lrt BMC_OLD*;ls -lrt;exit 0;",
+       "DocumentationFile" : {
+        "FileName" : "456"
+      },
+      "When" : {
+        "WeekDays" : [ "NONE" ],
+        "Months" : [ "NONE" ],
+        "MonthDays" : [ "NONE" ],
+        "DaysRelation" : "OR"
+      },
+      "JAVA_CHECKING" : {
+        "Type" : "Resource:Pool",
+        "Quantity" : "1"
+      },
+      "IfBase:Folder:CompletionStatus_0" : {
+        "Type" : "If:CompletionStatus",
+        "CompletionStatus" : "OK",
+        "Mail_0" : {
+          "Type" : "Action:Mail",
+          "Subject" : "\"JRE_For_Restore\" RENAMED & COMPRESSED IN %%NODEID for %%$ODATE",
+          "To" : "hari.srinivas@ah.nl;aishwarya.pandiyan@ah.nl;sivachandran.ranganathan@ah.nl;sanjay.kumar@ah.nl;bala.venkatesh@ah.nl",
+          "Message" : "Hi Team,\\n\\nThe \"JRE_For_Restore\" FOLDER IS RENAMED & COMPRESSED as BMC_OLD_File.tar.gz IN SERVER %%NODEID for the date %%$ODATE\\n\\nOnce validated the renamed file will be removed.\\n",
+          "AttachOutput" : true
+        }
+      }
     }
   }
+}
+
+
+
+
   

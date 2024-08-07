@@ -66,9 +66,8 @@ jobs:
           path='/home/runner/work/git_nagesh/git_nagesh'
           cd ${path}
           for file in ${path}/templates/ctmjobs/acc/* ; do
-            cat $file
+            echo $file
             ${path}/vars/Documentation_FileName_check.sh "$file"
-
             echo "processing with next one"
            
           done
