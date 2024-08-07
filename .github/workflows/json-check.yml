@@ -30,8 +30,10 @@ jobs:
             fi
           done
           if ((errors)); then
-            echo "$errors files had errors"
+            echo "Please check the syntax"
             exit 1
+          else
+            echo "All looks good"
           fi
         shell: bash -l {0} -v
 
@@ -74,7 +76,7 @@ jobs:
             fi
           done
           if ((errors)); then
-            echo "$errors files had documentation file name errors"
+            echo "Please verify that all jobs should update with the latest change no."
             exit 1
           else 
            echo "All looks good"
@@ -90,11 +92,8 @@ jobs:
       #     path='/home/runner/work/git_nagesh/git_nagesh'
       #     for file in ${path}/templates/ctmjobs/test/* ; do
       #       echo $file
-      #       ${path}/vars/Documentation_FileName_check.sh "$file"
-            
-           
-      #     done
-         
+      #       ${path}/vars/Documentation_FileName_check.sh "$file"    
+      #     done   
       #   shell: bash -l {0} -v
 
 
