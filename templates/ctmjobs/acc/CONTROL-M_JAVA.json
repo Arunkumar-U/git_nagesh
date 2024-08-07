@@ -115,9 +115,7 @@
         "Variables" : [ {
           "DELTODATE" : "%%$CALCDATE %%$DATE -5"
         } ],
-        "DocumentationFile" : {
-          "FileName" : "CHG0096060"
-        },
+        
         "When" : {
           "WeekDays" : [ "NONE" ],
           "Months" : [ "NONE" ],
