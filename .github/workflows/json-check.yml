@@ -43,6 +43,13 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Ensuring the files is checkout to the runner
+        run: |
+          path='/home/runner/work/git_nagesh/git_nagesh/vars'
+          echo "${path}"
+          cd ${path}; chmod 755 Documentation_FileName_check.sh;
+       
+
       - name: Check changed files
         uses: dorny/paths-filter@v3
         id: filter
