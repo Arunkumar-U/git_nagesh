@@ -7,7 +7,7 @@ input_file=$1
 check_documentation_file() {
   local parent_object=$1
   local object_name=$2
-  local object_path=".$parent_object.$object_name"
+  local object_path="$parent_object.\"$object_name\""
 
   # Check if DocumentationFile exists
   has_documentation_file=$(jq -e "$object_path | has(\"DocumentationFile\")" $input_file)
@@ -27,13 +27,19 @@ check_documentation_file() {
 # Get the name of the top-level object
 top_level_object=$(jq -r 'keys_unsorted[0]' $input_file)
 
+# Ensure we have a valid top-level object
+if [ -z "$top_level_object" ]; then
+  echo "Error: No top-level object found in the JSON file."
+  exit 1
+fi
+
 # Find all nested objects inside the top-level object
-nested_objects=$(jq -r ".$top_level_object | to_entries | map(select(.value | type == \"object\")) | .[].key" $input_file)
+nested_objects=$(jq -r ".\"$top_level_object\" | to_entries | map(select(.value | type == \"object\")) | .[].key" $input_file)
 
 # Check for DocumentationFile and FileName in each nested object
 missing_or_empty_file_names=()
 for obj in $nested_objects; do
-  result=$(check_documentation_file $top_level_object $obj)
+  result=$(check_documentation_file ".\"$top_level_object\"" "$obj")
   if [ -n "$result" ]; then
     missing_or_empty_file_names+=("$result")
   fi

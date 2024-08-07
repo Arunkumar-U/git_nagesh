@@ -68,7 +68,7 @@ jobs:
           for file in ${path}/templates/ctmjobs/acc/* ; do
             echo $file
             ${path}/vars/Documentation_FileName_check.sh "$file"
-            echo "processing with next one"
+            
            
           done
          
