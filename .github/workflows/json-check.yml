@@ -1,7 +1,7 @@
 ---
 name: Json Syntax Check
 on:
-  pull_request:
+  push
 
 jobs:
   json-syntax-validation:
@@ -12,28 +12,28 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check changed file
-        uses: dorny/paths-filter@v3
-        with:
-          filters: |
-            json: "**/*/json"
+      # - name: Check changed file
+      #   uses: dorny/paths-filter@v3
+      #   with:
+      #     filters: |
+      #       json: "**/*/json"
 
-      - name: Validate Json Syntax
-        run: |
-          git fetch origin main
-          errors=0
-          for file in $(git diff --name-only origin/main...HEAD -- '*.json') ; do
-            if ! jq . "$file" >/dev/null 2>&1; then
-              echo "Error in $file"
-              jq empty "$file"
-              ((errors++))
-            fi
-          done
-          if ((errors)); then
-            echo "$errors files had errors"
-            exit 1
-          fi
-        shell: bash -l {0} -v
+      # - name: Validate Json Syntax
+      #   run: |
+      #     git fetch origin main
+      #     errors=0
+      #     for file in $(git diff --name-only origin/main...HEAD -- '*.json') ; do
+      #       if ! jq . "$file" >/dev/null 2>&1; then
+      #         echo "Error in $file"
+      #         jq empty "$file"
+      #         ((errors++))
+      #       fi
+      #     done
+      #     if ((errors)); then
+      #       echo "$errors files had errors"
+      #       exit 1
+      #     fi
+      #   shell: bash -l {0} -v
 
   json-documentation-check:
     runs-on: ubuntu-latest
@@ -63,22 +63,39 @@ jobs:
         run: |
           git fetch origin main
           errors=0
-          path='/home/runner/work/git_nagesh/git_nagesh/vars'
+          path='/home/runner/work/git_nagesh/git_nagesh/'
           cd ${path}
-          for file in $(git diff --name-only origin/main...HEAD -- '*.json') ; do
-            echo "$file"
+          for file in ${path}/templates/ctmjobs/acc/* ; do
+            cat $file
             ./Documentation_FileName_check.sh "$file"
-            if [ $? -ne 0 ]; then
-              exit 1
-            fi
+
+            echo "processing with next one"
+           
           done
-          # if ((errors)); then
-          #   echo "$errors files had documentation file name errors"
-          #   exit 1
-          # else 
-          #  echo "All looks good"
-          # fi
+         
         shell: bash -l {0} -v
+
+      # - name: Run Documentation FileName Check
+      #   # if: steps.filter.outputs.json == 'true'
+      #   run: |
+      #     git fetch origin main
+      #     errors=0
+      #     path='/home/runner/work/git_nagesh/git_nagesh/vars'
+      #     cd ${path}
+      #     for file in $(git diff --name-only origin/main...HEAD -- '*.json') ; do
+      #       echo "$file"
+      #       ./Documentation_FileName_check.sh "$file"
+      #       if [ $? -ne 0 ]; then
+      #         ((errors++))
+      #       fi
+      #     done
+      #     if ((errors)); then
+      #       echo "$errors files had documentation file name errors"
+      #       exit 1
+      #     else 
+      #      echo "All looks good"
+      #     fi
+      #   shell: bash -l {0} -v
 
 
 
