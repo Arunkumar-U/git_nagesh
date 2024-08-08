@@ -22,7 +22,7 @@
         "Application" : "middleware",
         "Command" : "ls -lrt /controlm/ctm_agent/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE/lib/rt.jar;/controlm/ctm_agent/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE/bin/java  -version;ls -lrt /controlm/ctm_agent/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE_64/lib/rt.jar;/controlm/ctm_agent/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE_64/bin/java -version;cd /controlm/ctm_agent/ctm/;mv JRE_For_Restore BMC_OLD_File;tar -zcvf BMC_OLD_File.tar.gz BMC_OLD_File;chmod 777 BMC_OLD_File.tar.gz;rm -rf BMC_OLD_File;",
          "DocumentationFile" : {
-          "FileName" : "123"
+          
         },
         "When" : {
           "WeekDays" : [ "NONE" ],
@@ -59,9 +59,7 @@
         "RunAs" : "ctmagt",
         "Application" : "JAVA_CHECK",
         "Command" : "ls -lrt /opt/ctmagt/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE/lib/rt.jar;/opt/ctmagt/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE/bin/java  -version;ls -lrt /opt/ctmagt/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE_64/lib/rt.jar;/opt/ctmagt/ctm/JRE_For_Restore/PAKAI.9.0.00.200/JRE_64/bin/java -version;cd /opt/ctmagt/ctm/;mv JRE_For_Restore BMC_OLD_File;tar -zcvf BMC_OLD_File.tar.gz BMC_OLD_File;chown ctmagt:controlm BMC_OLD_File.tar.gz;chmod 777 BMC_OLD_File.tar.gz;rm -rf BMC_OLD_File;ls -lrt BMC_OLD*;ls -lrt;exit 0;",
-         "DocumentationFile" : {
-            "FileName": 123
-         },
+        
         "When" : {
           "WeekDays" : [ "NONE" ],
           "Months" : [ "NONE" ],
