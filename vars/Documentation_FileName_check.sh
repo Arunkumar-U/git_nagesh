@@ -47,7 +47,7 @@ done
 
 # Print results
 if [ ${#missing_or_empty_file_names[@]} -ne 0 ]; then
-  echo "The following issues were found:"
+  echo "In the following jobs issues were found:"
   for item in "${missing_or_empty_file_names[@]}"; do
     echo "$item"
   done
