@@ -28,28 +28,28 @@ jobs:
             yaml: 'vars/**/main.yml'
 
       - name: Run Yaml Pre-check
-      if: steps.filter.outputs.yaml == 'true'
-      run: |
-        git fetch origin main
-        errors=0
-        path='/home/runner/work/ah-tech-ctrlm-jac-workflow/ah-tech-ctrlm-jac-workflow'
-        for file in $(git diff --name-only origin/main...HEAD -- 'vars/**/main.yml'); do
-          echo "Processing the $file"
-          # ${path}/vars/yaml_prech.sh "$file"
-          # if [ $? -ne 0 ]; then
-          #   ((errors++))
+        if: steps.filter.outputs.yaml == 'true'
+        run: |
+          git fetch origin main
+          errors=0
+          path='/home/runner/work/ah-tech-ctrlm-jac-workflow/ah-tech-ctrlm-jac-workflow'
+          for file in $(git diff --name-only origin/main...HEAD -- 'vars/**/main.yml'); do
+            echo "Processing the $file"
+            # ${path}/vars/yaml_prech.sh "$file"
+            # if [ $? -ne 0 ]; then
+            #   ((errors++))
+            # fi
+          done
+          # if ((errors)); then
+          #   echo "Please verify and correct the folder name"
+          #   echo "usage: It should be capital"
+          #   echo ""
+          #   echo "The folder name shoudl ends with .json"
+          #   exit 1
+          # else 
+          #   echo "All looks good"
           # fi
-        done
-        # if ((errors)); then
-        #   echo "Please verify and correct the folder name"
-        #   echo "usage: It should be capital"
-        #   echo ""
-        #   echo "The folder name shoudl ends with .json"
-        #   exit 1
-        # else 
-        #   echo "All looks good"
-        # fi
-        # shell: bash -l
+          # shell: bash -l
 
 
       # - name: Installing node.js and npm
