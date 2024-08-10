@@ -32,21 +32,14 @@ jobs:
 
 
       - name: Run Yaml Pre-check
-        if: steps.filter.outputs.yaml == 'true'
         run: |
           git fetch origin main
           path='/home/runner/work/ah-tech-ctrlm-jac-workflow/ah-tech-ctrlm-jac-workflow'
 
           echo "Changed files:"
-          changed_files=$(git diff --name-only origin/main...HEAD -- 'vars/**/main.yml')
-
-          if [[ -z "$changed_files" ]]; then
-            echo "No changes detected in main.yml files."
-            exit 0
-          else
-            echo "$changed_files"
-            
-          fi
+          changed_files=$(git diff --name-only main...HEAD -- 'vars/acc/main.yml' 'vars/test/main.yml' 'vars/prd/main.yml')
+          echo "$changed_files"
+         
         shell: bash -l {0} -v
 
       
