@@ -28,7 +28,11 @@ jobs:
             yaml: 'vars/**/main.yml'
 
       - name: Debug paths-filter output
-        run: echo "paths-filter result: ${{ steps.filter.outputs.yaml }}"
+        run: echo "paths-filter result: $RESULT"
+        shell: bash
+        env:
+          RESULT: ${{ steps.filter.outputs.yaml }}
+
 
       - name: Run Yaml Pre-check
         #if: steps.filter.outputs.yaml == 'true'
