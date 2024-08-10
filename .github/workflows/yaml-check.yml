@@ -49,7 +49,7 @@ jobs:
           # else 
           #   echo "All looks good"
           # fi
-          # shell: bash -l
+          shell: bash -l
 
 
       # - name: Installing node.js and npm
