@@ -20,15 +20,11 @@ jobs:
           cd ${path}
           #./yaml_precheck.sh ${path}/test/main.yml ${path}/acc/main.yml ${path}/prd/main.yml
 
-      - name: Check changed files
-        id: filter
+      - name: Check changed file
         uses: dorny/paths-filter@v3
         with:
           filters: |
-            yaml:
-              - 'vars/acc/main.yml'
-              - 'vars/test/main.yml'
-              - 'vars/prd/main.yml'
+            json: "**/*/yml"
 
 
       - name: Run Yaml Pre-check
@@ -37,7 +33,7 @@ jobs:
           path='/home/runner/work/ah-tech-ctrlm-jac-workflow/ah-tech-ctrlm-jac-workflow'
 
           echo "Changed files:"
-          changed_files=$(git diff --name-only main...HEAD -- 'vars/acc/main.yml' 'vars/test/main.yml' 'vars/prd/main.yml')
+          changed_files=$(git diff --name-only origin/main...HEAD -- '*.yml')
           echo "$changed_files"
          
         shell: bash -l {0} -v
