@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - arun
-  workflow_dispatch:
 
 jobs:
   test:
@@ -17,19 +16,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y ansible
 
-      - name: Run Ansible Playbook
-        run: |
-          ansible-playbook -i localhost, -c local ansible/playbook.yml
+      # - name: Run Ansible Playbook
+      #   run: |
+      #     ansible-playbook -i localhost, -c local ansible/playbook.yml
 
-      - name: list out the files
+      - name: check th ansible in intalled and check it version
         run: |
-          cd /tmp
-          ls -la
-          pwd
-
-      - name: viewing the github variables
-        run: |
-          echo "user name is $USER"
-          echo "password is $PASSWORD"
-
+          ansible --verion
+          
       
