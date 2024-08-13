@@ -21,7 +21,7 @@ jobs:
       #     ansible-playbook -i localhost, -c local ansible/playbook.yml
 
       - name: check th ansible in intalled and check it version
-        run: |
-          ansible -v
+        run: ansible --version
+          
 
       
