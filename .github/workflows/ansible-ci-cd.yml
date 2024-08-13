@@ -22,6 +22,6 @@ jobs:
 
       - name: check th ansible in intalled and check it version
         run: |
-          ansible --verion
-          
+          ansible -v
+
       
